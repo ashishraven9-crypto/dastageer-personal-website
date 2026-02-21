@@ -5,7 +5,6 @@ import { useEffect } from 'react'
 export function Contact() {
 
   useEffect(() => {
-    // Load Cal.com embed script
     const script = document.createElement('script')
     script.type = 'text/javascript'
     script.innerHTML = `
@@ -36,21 +35,20 @@ export function Contact() {
         }; 
       })(window, "https://app.cal.com/embed/embed.js", "init");
       
-      Cal("init", "mojju-discovery-call", {origin:"https://app.cal.com"});
+      Cal("init", "discovery-call", {origin:"https://app.cal.com"});
       
-      Cal.ns["mojju-discovery-call"]("inline", {
-        elementOrSelector:"#my-cal-inline-mojju-discovery-call",
+      Cal.ns["discovery-call"]("inline", {
+        elementOrSelector:"#my-cal-inline-discovery-call",
         config: {"layout":"month_view"},
         calLink: "zeroqode/30min",
       });
       
-      Cal.ns["mojju-discovery-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+      Cal.ns["discovery-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
     `
     
     document.body.appendChild(script)
     
     return () => {
-      // Cleanup script on unmount
       if (document.body.contains(script)) {
         document.body.removeChild(script)
       }
@@ -64,19 +62,16 @@ export function Contact() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-3 h-3 bg-accent-emerald rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-muted-foreground">
-              Let's Create Together
-            </span>
+            <span className="text-sm font-semibold text-muted-foreground">Let's Connect</span>
             <div className="w-3 h-3 bg-accent-blue rounded-full animate-pulse" />
           </div>
           
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-8">
-            <span className="block mb-2">Ready to Light Up the Screen?</span>
-            
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-8 text-foreground">
+            <span className="block mb-2">Ready to Get Started?</span>
           </h2>
           
           <p className="text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Book a discovery call to discuss your project and see how we can bring your vision to cinematic reality
+            Book a discovery call to discuss your project and explore how management expertise and AI can drive results
           </p>
         </div>
 
@@ -88,7 +83,7 @@ export function Contact() {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-xl font-black text-foreground mb-1">
-                    MOJJU Discovery Call
+                    Discovery Call
                   </h3>
                   <p className="text-muted-foreground">
                     30 minutes • Video call • Free consultation
@@ -102,14 +97,10 @@ export function Contact() {
             </div>
             
             {/* Cal.com Embed Container */}
-            <div className="p-0 bg-white">
+            <div className="p-0 bg-card">
               <div 
-                style={{
-                  width: '100%',
-                  height: '600px',
-                  overflow: 'scroll'
-                }} 
-                id="my-cal-inline-mojju-discovery-call"
+                style={{ width: '100%', height: '600px', overflow: 'scroll' }} 
+                id="my-cal-inline-discovery-call"
               />
             </div>
           </div>
@@ -123,9 +114,7 @@ export function Contact() {
                 <div className="w-6 h-6 bg-accent-blue rounded-full" />
               </div>
               <h4 className="font-black text-foreground mb-2">Project Discussion</h4>
-              <p className="text-muted-foreground text-sm">
-                Share your vision and requirements with our team
-              </p>
+              <p className="text-muted-foreground text-sm">Share your vision and requirements</p>
             </div>
             
             <div className="bg-background clean-border rounded-2xl p-6 subtle-shadow">
@@ -133,9 +122,7 @@ export function Contact() {
                 <div className="w-6 h-6 bg-accent-emerald rounded-full" />
               </div>
               <h4 className="font-black text-foreground mb-2">Custom Strategy</h4>
-              <p className="text-muted-foreground text-sm">
-                Get a tailored approach for your unique project
-              </p>
+              <p className="text-muted-foreground text-sm">Get a tailored approach for your needs</p>
             </div>
             
             <div className="bg-background clean-border rounded-2xl p-6 subtle-shadow">
@@ -143,9 +130,7 @@ export function Contact() {
                 <div className="w-6 h-6 bg-accent-purple rounded-full" />
               </div>
               <h4 className="font-black text-foreground mb-2">Next Steps</h4>
-              <p className="text-muted-foreground text-sm">
-                Clear timeline and roadmap to bring your idea to life
-              </p>
+              <p className="text-muted-foreground text-sm">Clear timeline and roadmap to results</p>
             </div>
           </div>
         </div>
