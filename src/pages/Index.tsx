@@ -8,6 +8,7 @@ import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import MBABackground from "@/components/MBABackground";
+import SidePanels from "@/components/SidePanels";
 import CustomCursor from "@/components/CustomCursor";
 import MarqueeTicker from "@/components/MarqueeTicker";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
@@ -17,8 +18,11 @@ const Index = () => (
     {/* Scroll progress bar */}
     <ScrollProgressBar />
 
-    {/* MBA-themed animated background — floating charts, formulas, strategy icons */}
+    {/* MBA-themed animated background — floating charts, formulas, network nodes, strategy symbols */}
     <MBABackground />
+
+    {/* Fixed side panels — left: skills/name, right: metrics/social/scroll */}
+    <SidePanels />
 
     {/* Custom magnetic cursor */}
     <CustomCursor />
