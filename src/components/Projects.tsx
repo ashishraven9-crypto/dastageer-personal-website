@@ -53,11 +53,13 @@ const projects = [
   },
 ];
 
-// Tilt card effect
+// Tilt card — disabled on touch devices
 const TiltCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const isTouch = typeof window !== "undefined" && navigator.maxTouchPoints > 0;
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isTouch) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -85,14 +87,13 @@ const TiltCard = ({ children, className = "" }: { children: React.ReactNode; cla
   );
 };
 
-// Scroll reveal wrapper
 const RevealCard = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold: 0.1 });
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold: 0.08 });
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
@@ -105,8 +106,11 @@ const RevealCard = ({ children, delay = 0, className = "" }: { children: React.R
 
 const ProjectCard = ({ project, delay = 0 }: { project: typeof projects[0]; delay?: number }) => (
   <RevealCard delay={delay} className="h-full">
-    <TiltCard className={`group relative rounded-4xl overflow-hidden h-full ${project.size === "large" ? "" : ""}`}>
-      <div className="relative overflow-hidden bg-muted rounded-4xl" style={{ aspectRatio: project.size === "large" ? "16/9" : "4/3" }}>
+    <TiltCard className="group relative rounded-3xl sm:rounded-4xl overflow-hidden h-full">
+      <div
+        className="relative overflow-hidden bg-muted rounded-3xl sm:rounded-4xl w-full"
+        style={{ aspectRatio: project.size === "large" ? "16/9" : "4/3" }}
+      >
         <img
           src={project.image}
           alt={project.title}
@@ -114,44 +118,44 @@ const ProjectCard = ({ project, delay = 0 }: { project: typeof projects[0]; dela
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent transition-opacity duration-300" />
-        {/* Extra hover overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+        {/* Hover overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-all duration-500" />
 
         {/* Content */}
-        <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
+        <div className="absolute inset-0 p-4 sm:p-6 md:p-8 flex flex-col justify-between">
           <div className="flex items-start justify-between gap-2">
-            <span className={`px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-md font-sans ${project.categoryClass}`}>
+            <span className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-medium backdrop-blur-md font-sans ${project.categoryClass}`}>
               {project.category}
             </span>
-            <span className="px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-xs font-medium text-white border border-white/30 font-sans">
+            <span className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] sm:text-xs font-medium text-white border border-white/30 font-sans shrink-0">
               {project.date}
             </span>
           </div>
 
-          <div className="flex items-end justify-between gap-4">
-            <div className="flex-1">
-              <span className="text-white/40 text-xs font-mono tracking-widest block mb-2">{project.id}</span>
-              <h3 className={`text-white font-bold leading-tight font-serif ${project.size === "large" ? "text-2xl md:text-3xl" : "text-lg md:text-xl"}`}>
+          <div className="flex items-end justify-between gap-3">
+            <div className="flex-1 min-w-0">
+              <span className="text-white/40 text-[10px] font-mono tracking-widest block mb-1.5">{project.id}</span>
+              <h3 className={`text-white font-bold leading-tight font-serif ${project.size === "large" ? "text-lg sm:text-2xl md:text-3xl" : "text-base sm:text-lg md:text-xl"}`}>
                 {project.title}
               </h3>
               {project.size === "large" && (
-                <p className="text-white/70 text-sm mt-2 leading-relaxed font-sans line-clamp-2">
+                <p className="text-white/70 text-xs sm:text-sm mt-1.5 leading-relaxed font-sans line-clamp-2 hidden sm:block">
                   {project.description}
                 </p>
               )}
-              {/* Highlights — visible on hover */}
-              <div className="flex flex-col gap-1 mt-3 max-h-0 group-hover:max-h-24 overflow-hidden transition-all duration-500">
+              {/* Highlights on hover */}
+              <div className="flex flex-col gap-1 mt-2 max-h-0 group-hover:max-h-24 overflow-hidden transition-all duration-500">
                 {project.highlights.slice(0, 2).map((h) => (
                   <div key={h} className="flex items-center gap-1.5">
-                    <TrendingUp size={10} className="text-white/60 shrink-0" />
+                    <TrendingUp size={9} className="text-white/60 shrink-0" />
                     <span className="text-white/70 text-[10px] font-sans">{h}</span>
                   </div>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-1.5 mt-3">
+              <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-2 sm:mt-3">
                 {project.tags.slice(0, 4).map((tag) => (
-                  <span key={tag} className="px-2 py-0.5 rounded-full bg-white/15 backdrop-blur-sm text-white/80 text-[10px] font-medium border border-white/20 font-sans">
+                  <span key={tag} className="px-1.5 sm:px-2 py-0.5 rounded-full bg-white/15 backdrop-blur-sm text-white/80 text-[9px] sm:text-[10px] font-medium border border-white/20 font-sans">
                     {tag}
                   </span>
                 ))}
@@ -160,9 +164,9 @@ const ProjectCard = ({ project, delay = 0 }: { project: typeof projects[0]; dela
           </div>
         </div>
 
-        {/* Floating arrow — appears on hover */}
-        <div className="absolute bottom-6 right-6 floating-button w-10 h-10 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-          <ArrowUpRight className="w-4 h-4" />
+        {/* Floating arrow */}
+        <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 floating-button w-8 h-8 sm:w-10 sm:h-10 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+          <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </div>
       </div>
     </TiltCard>
@@ -170,21 +174,22 @@ const ProjectCard = ({ project, delay = 0 }: { project: typeof projects[0]; dela
 );
 
 const Projects = () => (
-  <section id="projects" className="py-10 px-4 relative z-10">
+  <section id="projects" className="py-8 sm:py-10 px-3 sm:px-4 relative z-10">
     <div className="max-w-5xl mx-auto">
       <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground font-sans mb-4">
         Projects &amp; Case Studies
       </p>
-      <div className="flex items-end justify-between mb-5">
-        <h2 className="font-serif text-3xl md:text-4xl font-bold leading-tight text-foreground">
+      <div className="flex items-end justify-between mb-4 sm:mb-5">
+        <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-foreground">
           Work That Creates <em className="not-italic text-foreground/60">Real Impact</em>
         </h2>
-        <a href="#contact" className="hidden sm:flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors font-sans">
+        <a href="#contact" className="hidden sm:flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors font-sans shrink-0 ml-4">
           Collaborate →
         </a>
       </div>
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {/* Mobile: single column stack; tablet+: grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
         <div className="sm:col-span-2 md:col-span-2">
           <ProjectCard project={projects[0]} delay={0} />
         </div>
