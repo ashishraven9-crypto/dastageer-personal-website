@@ -5,7 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/dastageer-personal-website/",
+  // Use subpath for GitHub Pages, root for Vercel/other hosts
+  base: process.env.GITHUB_PAGES === "true" ? "/dastageer-personal-website/" : "/",
   server: {
     host: "::",
     port: 8080,

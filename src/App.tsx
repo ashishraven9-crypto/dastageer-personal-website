@@ -8,13 +8,18 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Auto-detect base path: GitHub Pages uses subpath, Vercel/others use root
+const basename = window.location.hostname.includes("github.io")
+  ? "/dastageer-personal-website"
+  : "/";
+
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/dastageer-personal-website">
+        <BrowserRouter basename={basename}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="*" element={<NotFound />} />
