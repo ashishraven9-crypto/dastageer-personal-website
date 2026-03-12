@@ -3,7 +3,6 @@ import { useTypewriter } from "@/hooks/useTypewriter";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useCounter } from "@/hooks/useCounter";
 import { useAB } from "@/contexts/ABContext";
-import FloatingBadges from "./FloatingBadges";
 import MagneticCard from "./MagneticCard";
 
 const roles = [
@@ -45,9 +44,6 @@ const Hero = () => {
                 background: "linear-gradient(135deg, hsl(var(--beige-light)) 0%, hsl(var(--beige-warm)) 50%, hsl(var(--beige-light)) 100%)",
               }}
             />
-
-            {/* Floating badges overlay */}
-            <FloatingBadges />
 
             <div className="grid md:grid-cols-2 gap-0">
 
@@ -170,7 +166,7 @@ const Hero = () => {
                 <div>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-muted text-xs font-medium text-muted-foreground border border-border font-sans">
                     <MapPin size={11} />
-                    <span className="truncate">Bangalore, India · Open to Opportunities</span>
+                    <span className="truncate">NIT Kurukshetra, Haryana, India</span>
                   </span>
                 </div>
 

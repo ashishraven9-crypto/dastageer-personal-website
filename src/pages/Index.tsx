@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -12,14 +11,11 @@ import ParticleBackground from "@/components/ParticleBackground";
 import CustomCursor from "@/components/CustomCursor";
 import MarqueeTicker from "@/components/MarqueeTicker";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
-import VariantSwitcher from "@/components/VariantSwitcher";
-import ABDashboard from "@/components/ABDashboard";
 import { ABProvider, useAB } from "@/contexts/ABContext";
 
 // Inner component that reads variant from context
 const PortfolioContent = () => {
   const { variant } = useAB();
-  const [dashboardOpen, setDashboardOpen] = useState(false);
 
   // Map variant to CSS class
   const variantClass =
@@ -52,11 +48,6 @@ const PortfolioContent = () => {
       <Contact />
       <Footer />
 
-      {/* A/B Variant Switcher + Analytics button */}
-      <VariantSwitcher onOpenDashboard={() => setDashboardOpen(true)} />
-
-      {/* A/B Analytics Dashboard modal */}
-      {dashboardOpen && <ABDashboard onClose={() => setDashboardOpen(false)} />}
     </div>
   );
 };
