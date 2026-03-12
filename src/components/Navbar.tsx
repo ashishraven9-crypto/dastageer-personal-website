@@ -23,16 +23,23 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
       <nav
-        className={`pill-nav max-w-5xl mx-auto px-5 py-3 flex items-center justify-between transition-all duration-300 ${
+        className={`max-w-5xl mx-auto px-5 py-3 flex items-center justify-between transition-all duration-300 rounded-full backdrop-blur-lg ${
           scrolled ? "shadow-lg" : ""
         }`}
+        style={{
+          background: "rgba(250, 248, 244, 0.92)",
+          border: "1px solid #DDD6CC",
+        }}
       >
         {/* Logo */}
         <a href="#" className="flex items-center gap-2.5 group">
-          <span className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold font-sans tracking-tight">
+          <span
+            className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold font-sans tracking-tight"
+            style={{ background: "#5C4A32", color: "#FAF8F4" }}
+          >
             GMD
           </span>
-          <span className="hidden sm:block font-serif font-bold text-foreground text-base tracking-tight">
+          <span className="hidden sm:block font-serif font-bold text-base tracking-tight" style={{ color: "#2C2013" }}>
             G.Md.Dastageer
           </span>
         </a>
@@ -42,11 +49,14 @@ const Navbar = () => {
           {navLinks.map((link, i) => (
             <span key={link.label} className="flex items-center">
               {i > 0 && (
-                <span className="text-muted-foreground/40 mx-1 text-xs select-none">·</span>
+                <span className="mx-1 text-xs select-none" style={{ color: "rgba(138, 125, 107, 0.4)" }}>·</span>
               )}
               <a
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded-lg hover:bg-muted"
+                className="text-sm transition-colors px-2 py-1 rounded-lg"
+                style={{ color: "#8A7D6B" }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = "#2C2013"; e.currentTarget.style.background = "#EDE9E2"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = "#8A7D6B"; e.currentTarget.style.background = "transparent"; }}
               >
                 {link.label}
               </a>
@@ -58,12 +68,14 @@ const Navbar = () => {
         <div className="flex items-center gap-2">
           <a
             href="#contact"
-            className="hidden sm:flex items-center px-5 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-all hover:scale-105 font-sans"
+            className="hidden sm:flex items-center px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-all hover:scale-105 font-sans"
+            style={{ background: "#5C4A32", color: "#FAF8F4" }}
           >
             Connect
           </a>
           <button
-            className="md:hidden w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:bg-muted transition-all"
+            className="md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-all"
+            style={{ color: "#8A7D6B" }}
             onClick={() => setMenuOpen((o) => !o)}
             aria-label="Toggle menu"
           >
@@ -74,14 +86,18 @@ const Navbar = () => {
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div className="md:hidden max-w-5xl mx-auto mt-2 rounded-3xl border border-border bg-background/95 backdrop-blur-lg shadow-lg overflow-hidden animate-slide-down">
+        <div
+          className="md:hidden max-w-5xl mx-auto mt-2 rounded-3xl backdrop-blur-lg shadow-lg overflow-hidden animate-slide-down"
+          style={{ background: "rgba(250, 248, 244, 0.97)", border: "1px solid #DDD6CC" }}
+        >
           <div className="p-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="px-4 py-3 rounded-xl text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-all font-medium"
+                className="px-4 py-3 rounded-xl text-sm font-medium transition-all"
+                style={{ color: "#8A7D6B" }}
               >
                 {link.label}
               </a>
@@ -89,7 +105,8 @@ const Navbar = () => {
             <a
               href="#contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-2 px-4 py-3 rounded-full bg-primary text-primary-foreground text-sm font-semibold text-center hover:opacity-90 transition-all"
+              className="mt-2 px-4 py-3 rounded-full text-sm font-semibold text-center hover:opacity-90 transition-all"
+              style={{ background: "#5C4A32", color: "#FAF8F4" }}
             >
               Let's Connect
             </a>
