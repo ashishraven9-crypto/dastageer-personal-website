@@ -52,44 +52,6 @@
     --sand:           40 28% 78%;
   }
 
-  .dark {
-    --background:           25 15% 8%;    /* warm dark */
-    --foreground:           36 20% 92%;   /* warm off-white */
-    --card:                 25 12% 11%;
-    --card-foreground:      36 20% 92%;
-    --popover:              25 15% 8%;
-    --popover-foreground:   36 20% 92%;
-    --primary:              36 20% 90%;
-    --primary-foreground:   25 15% 8%;
-    --secondary:            25 10% 18%;
-    --secondary-foreground: 36 20% 92%;
-    --muted:                25 10% 16%;
-    --muted-foreground:     36 12% 55%;
-    --accent:               36 20% 78%;
-    --accent-foreground:    25 15% 8%;
-    --destructive:          0 62% 50%;
-    --destructive-foreground: 0 0% 95%;
-    --border:               25 10% 20%;
-    --input:                25 10% 20%;
-    --ring:                 36 20% 90%;
-
-    --tag-ai:         200 20% 22%;
-    --tag-health:     150 15% 20%;
-    --tag-strategy:    36 18% 22%;
-    --tag-mba:         25 20% 22%;
-    --tag-tech:       220 15% 22%;
-    --tag-research:   340 15% 22%;
-    --tag-leadership:  60 15% 22%;
-
-    --surface-elevated: 25 12% 13%;
-    --shadow-soft:      25 30% 5%;
-    --glow-color:       36 20% 90%;
-
-    --beige-light:    25 12% 16%;
-    --beige-mid:      25 10% 14%;
-    --beige-warm:     25 10% 18%;
-    --sand:           25 10% 22%;
-  }
 }
 
 @layer base {

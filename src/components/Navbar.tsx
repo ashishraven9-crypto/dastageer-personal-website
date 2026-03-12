@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "About",      href: "#about" },
@@ -13,25 +13,12 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled,   setScrolled]   = useState(false);
   const [menuOpen,   setMenuOpen]   = useState(false);
-  const [dark,       setDark]       = useState(false);
-
-  /* Force light (beige) theme on initial load — never auto-detect system dark */
-  useEffect(() => {
-    document.documentElement.classList.remove("dark");
-  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const toggleDark = () => {
-    setDark((d) => {
-      document.documentElement.classList.toggle("dark", !d);
-      return !d;
-    });
-  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
@@ -69,13 +56,6 @@ const Navbar = () => {
 
         {/* Right actions */}
         <div className="flex items-center gap-2">
-          <button
-            onClick={toggleDark}
-            className="w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-all"
-            aria-label="Toggle theme"
-          >
-            {dark ? <Sun size={15} /> : <Moon size={15} />}
-          </button>
           <a
             href="#contact"
             className="hidden sm:flex items-center px-5 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-all hover:scale-105 font-sans"
