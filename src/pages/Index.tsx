@@ -7,12 +7,26 @@ import Experience from "@/components/Experience";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ParticleBackground from "@/components/ParticleBackground";
+import CustomCursor from "@/components/CustomCursor";
+import MarqueeTicker from "@/components/MarqueeTicker";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative">
+      {/* Animated particle background */}
+      <ParticleBackground />
+
+      {/* Custom magnetic cursor */}
+      <CustomCursor />
+
+      {/* Page content */}
       <Navbar />
       <Hero />
+
+      {/* Scrolling skill ticker between Hero and About */}
+      <MarqueeTicker />
+
       <About />
       <Skills />
       <Projects />
