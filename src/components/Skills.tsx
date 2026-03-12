@@ -7,7 +7,7 @@ const skillCategories = [
     title: "Generative AI & LLM Engineering",
     tagLabel: "AI / LLM",
     tagClass: "tag-ai",
-    description: "Cutting-edge AI tools and frameworks for building intelligent products",
+    description: "Core AI APIs, agent frameworks, and LLM engineering for building intelligent products",
     skills: [
       "Prompt Engineering Strategy",
       "Retrieval Augmented Generation (RAG)",
@@ -16,32 +16,98 @@ const skillCategories = [
       "AI Guardrails",
       "LLM Orchestration",
       "OpenAI API / GPT-4",
-      "Gemini / Claude",
+      "Anthropic Claude API",
+      "Google Gemini API",
+      "Hugging Face",
       "LangChain",
-      "Vector Databases",
+      "LangGraph",
+      "LlamaIndex",
+      "CrewAI",
+      "AutoGen",
+      "Semantic Kernel",
+    ],
+  },
+  {
+    title: "Vector Databases & AI Memory",
+    tagLabel: "Vector DB",
+    tagClass: "tag-research",
+    description: "AI memory, semantic search, and vector storage for smart AI applications",
+    skills: [
+      "Pinecone",
+      "Weaviate",
+      "ChromaDB",
+      "Supabase Vector",
+      "Embeddings",
+      "Semantic Search",
+      "Knowledge Graphs",
     ],
   },
   {
     title: "AI Automation & No-Code Tools",
     tagLabel: "Automation",
     tagClass: "tag-tech",
-    description: "Modern AI-powered automation and development platforms",
+    description: "Modern AI-powered automation, workflow orchestration, and development platforms",
     skills: [
       "n8n (AI Workflow Automation)",
+      "Make.com",
+      "Zapier",
+      "Webhooks & Trigger Flows",
       "Cursor (AI Code Editor)",
+      "GitHub Copilot",
+      "Windsurf IDE",
       "Lovable (AI Web Builder)",
       "Antigravity",
       "OpenClaw",
-      "Make / Zapier",
       "Flowise",
       "Dify",
       "Bolt.new",
+      "Notion AI",
+      "Perplexity (Research)",
+    ],
+  },
+  {
+    title: "Frontend Development",
+    tagLabel: "Frontend",
+    tagClass: "tag-strategy",
+    description: "Modern web and mobile frontend stack for building production-grade applications",
+    skills: [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "TypeScript",
+      "React Native",
+      "Expo",
+      "Webflow",
+      "Framer",
+      "REST APIs",
+      "Webhooks",
+      "JSON",
+      "HTTP Methods (GET/POST)",
+    ],
+  },
+  {
+    title: "Backend, Database & Auth",
+    tagLabel: "Backend",
+    tagClass: "tag-mba",
+    description: "Server-side architecture, databases, and authentication systems",
+    skills: [
+      "Supabase",
+      "PostgreSQL",
+      "Firebase",
+      "Prisma ORM",
+      "Redis (Caching)",
+      "Node.js",
+      "JWT Authentication",
+      "OAuth 2.0",
+      "REST API Design",
+      "SQL / DBMS",
+      "MERN Stack",
     ],
   },
   {
     title: "AI Product Management",
     tagLabel: "Strategy",
-    tagClass: "tag-mba",
+    tagClass: "tag-leadership",
     description: "Strategic frameworks for building and scaling AI products",
     skills: [
       "AI Product Roadmapping",
@@ -52,13 +118,16 @@ const skillCategories = [
       "User Story Mapping",
       "OKR Framework",
       "Product-Led Growth",
+      "PostHog Analytics",
+      "Mixpanel",
+      "Google Analytics",
     ],
   },
   {
     title: "Medical & Healthcare Tech",
     tagLabel: "Healthcare",
     tagClass: "tag-health",
-    description: "Healthcare informatics and clinical technology systems",
+    description: "Healthcare informatics, IoT, and clinical technology systems",
     skills: [
       "Healthcare IoT",
       "Raspberry Pi",
@@ -71,31 +140,57 @@ const skillCategories = [
     ],
   },
   {
-    title: "Data & Analytics",
-    tagLabel: "Data",
-    tagClass: "tag-leadership",
-    description: "Data-driven decision making and business intelligence",
+    title: "Payments, Analytics & Monitoring",
+    tagLabel: "Payments",
+    tagClass: "tag-ai",
+    description: "Payment integrations, user analytics, and application monitoring",
     skills: [
-      "Python",
-      "Machine Learning",
-      "Microsoft Power BI",
-      "SQL / DBMS",
-      "Data Analysis",
-      "Deep Learning",
+      "Razorpay (India)",
+      "Stripe (Global)",
+      "Subscription Handling",
+      "Payment Webhooks",
+      "Google Analytics",
+      "PostHog",
+      "Mixpanel",
+      "Sentry (Error Tracking)",
+      "LogRocket (Session Replay)",
     ],
   },
   {
-    title: "Engineering & DevOps",
-    tagLabel: "Engineering",
+    title: "DevOps, Security & Testing",
+    tagLabel: "DevOps",
     tagClass: "tag-strategy",
-    description: "Full-stack development and cloud infrastructure",
+    description: "Deployment, CI/CD, security fundamentals, and API testing",
     skills: [
-      "React / Vue.js / Node.js",
-      "Full Stack Development",
-      "Docker / Kubernetes",
+      "Docker",
+      "GitHub Actions (CI/CD)",
+      "Vercel",
+      "Netlify",
+      "Expo Build System",
+      "Capacitor",
+      "Environment Variables",
+      "OWASP Basics",
+      "Role-Based Access Control",
+      "Encryption Basics",
+      "Jest (Testing)",
+      "Postman (API Testing)",
       "AWS IoT",
-      "DevOps / CI-CD",
-      "MERN Stack",
+      "CDN Concepts",
+    ],
+  },
+  {
+    title: "Data & Machine Learning",
+    tagLabel: "Data",
+    tagClass: "tag-research",
+    description: "Data-driven decision making, ML, and business intelligence",
+    skills: [
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "Microsoft Power BI",
+      "Data Analysis",
+      "Pandas / NumPy",
+      "Scikit-learn",
     ],
   },
 ];
@@ -114,12 +209,14 @@ const certs = [
 ];
 
 const competencies = [
-  { name: "Generative AI & Prompt Engineering",    pct: 88 },
-  { name: "AI Automation (n8n, Cursor, Lovable)",  pct: 85 },
-  { name: "AI Product Management",                 pct: 82 },
-  { name: "Healthcare Technology",                 pct: 80 },
-  { name: "Full Stack Development",                pct: 84 },
-  { name: "Data Analysis & ML",                    pct: 78 },
+  { name: "Generative AI & Prompt Engineering",       pct: 88 },
+  { name: "AI Automation (n8n, Cursor, Lovable)",     pct: 85 },
+  { name: "AI Agent Frameworks (LangChain, CrewAI)",  pct: 80 },
+  { name: "AI Product Management",                    pct: 82 },
+  { name: "Healthcare Technology",                    pct: 80 },
+  { name: "Full Stack Development (React/Next.js)",   pct: 84 },
+  { name: "Backend & Database (Supabase/Postgres)",   pct: 76 },
+  { name: "Data Analysis & ML",                       pct: 78 },
 ];
 
 const AnimatedBar = ({ pct, visible }: { pct: number; visible: boolean }) => {
@@ -171,15 +268,15 @@ const Skills = () => {
             A Multidisciplinary <em className="not-italic text-foreground/60">Skill Stack</em>
           </h2>
           <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed font-sans max-w-2xl">
-            From cutting-edge LLM engineering and AI automation to healthcare technology and MBA-level strategy —
-            a skill set built for the AI era.
+            From LLM engineering, AI agent frameworks, and vector databases to full-stack development,
+            healthcare technology, and MBA-level strategy — a complete skill set built for the AI era.
           </p>
         </RevealCard>
 
         {/* Skill cards grid — 1 col mobile, 2 sm, 3 lg */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-5">
           {skillCategories.map((cat, i) => (
-            <RevealCard key={cat.title} delay={i * 80} className="group rounded-2xl sm:rounded-3xl bg-card border border-border overflow-hidden glow-card h-full">
+            <RevealCard key={cat.title} delay={i * 60} className="group rounded-2xl sm:rounded-3xl bg-card border border-border overflow-hidden glow-card h-full">
               <div className="p-4 sm:p-6 flex flex-col gap-2 sm:gap-3 h-full">
                 <div className="flex items-center justify-between">
                   <span className={`px-2 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-medium font-sans ${cat.tagClass}`}>
@@ -229,7 +326,7 @@ const Skills = () => {
                   key={cert.name}
                   className="flex items-start gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl border border-border hover:border-foreground/20 transition-all duration-300 hover:translate-x-1 group"
                   style={{
-                    background: "hsl(36, 25%, 97%)",
+                    background: "hsl(var(--beige-light))",
                     transitionDelay: `${i * 40}ms`,
                   }}
                 >
