@@ -1,4 +1,4 @@
-import { GraduationCap, Briefcase, Calendar, ArrowUpRight, MapPin, Sparkles } from "lucide-react";
+import { GraduationCap, Briefcase, Calendar, MapPin } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
 const experience = [
@@ -185,39 +185,7 @@ const Experience = () => (
             </RevealCard>
           ))}
 
-          {/* Actively seeking card */}
-          <RevealCard delay={200} className="rounded-2xl sm:rounded-3xl bg-card border border-foreground/15 overflow-hidden group hover:border-foreground/30 transition-all duration-300">
-            <div
-              className="h-1.5 w-full"
-              style={{ background: "linear-gradient(90deg, hsl(30,25%,40%), hsl(36,30%,60%))" }}
-            />
-            <div className="p-4 sm:p-6 flex flex-col gap-2 sm:gap-3 relative overflow-hidden">
-              <div
-                className="absolute -bottom-8 -right-8 w-28 sm:w-32 h-28 sm:h-32 rounded-full pointer-events-none"
-                style={{
-                  background: "hsl(36, 35%, 88%)",
-                  animation: "blob 8s ease-in-out infinite",
-                  opacity: 0.6,
-                }}
-              />
-              <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles size={13} className="text-foreground animate-pulse" />
-                  <span className="text-sm font-semibold text-foreground font-sans">Actively Seeking</span>
-                </div>
-                <p className="text-[11px] sm:text-xs text-muted-foreground font-sans leading-relaxed">
-                  Open to roles in AI Product Management, Healthcare Technology, and Business Strategy
-                  at organizations driving innovation in India and globally.
-                </p>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-primary-foreground text-xs font-semibold w-fit hover:opacity-90 hover:scale-105 transition-all font-sans mt-3 shadow-md"
-                >
-                  Get In Touch <ArrowUpRight size={11} />
-                </a>
-              </div>
-            </div>
-          </RevealCard>
+
         </div>
       </div>
     </div>
