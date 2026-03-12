@@ -9,14 +9,15 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xs">
+            <div className="flex items-center gap-2.5 mb-2">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm font-syne"
+                style={{ background: "linear-gradient(135deg, #10b981, #06b6d4)" }}>
                 G
               </div>
               <span className="font-semibold text-foreground">G. Mohammed Dastageer</span>
             </div>
             <p className="text-xs text-muted-foreground max-w-xs">
-              MBA Candidate · AI Product Manager · Medical Management Specialist · Bangalore, India
+              MBA · NIT Kurukshetra &nbsp;·&nbsp; AI Product Manager &nbsp;·&nbsp; Medical Management Specialist &nbsp;·&nbsp; Bangalore, India
             </p>
           </div>
 
@@ -44,7 +45,7 @@ const Footer = () => {
               <Linkedin size={15} />
             </a>
             <a
-              href="mailto:gmddasageer@gmail.com"
+              href="mailto:gmddastageer@gmail.com"
               className="w-9 h-9 rounded-lg glass-card flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
             >
               <Mail size={15} />
