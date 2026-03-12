@@ -7,7 +7,7 @@ import Experience from "@/components/Experience";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import ParticleBackground from "@/components/ParticleBackground";
+import MBABackground from "@/components/MBABackground";
 import CustomCursor from "@/components/CustomCursor";
 import MarqueeTicker from "@/components/MarqueeTicker";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
@@ -17,8 +17,8 @@ const Index = () => (
     {/* Scroll progress bar */}
     <ScrollProgressBar />
 
-    {/* Animated particle background */}
-    <ParticleBackground />
+    {/* MBA-themed animated background — floating charts, formulas, strategy icons */}
+    <MBABackground />
 
     {/* Custom magnetic cursor */}
     <CustomCursor />
