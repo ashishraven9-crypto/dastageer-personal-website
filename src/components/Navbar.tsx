@@ -15,6 +15,11 @@ const Navbar = () => {
   const [menuOpen,   setMenuOpen]   = useState(false);
   const [dark,       setDark]       = useState(false);
 
+  /* Force light (beige) theme on initial load — never auto-detect system dark */
+  useEffect(() => {
+    document.documentElement.classList.remove("dark");
+  }, []);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);

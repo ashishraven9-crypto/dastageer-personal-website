@@ -9,6 +9,7 @@
 ───────────────────────────────────────────────────────────────────────────── */
 @layer base {
   :root {
+    color-scheme: light;
     /* Warm beige background palette */
     --background:           36 25% 96%;   /* #F7F3EE — warm cream beige */
     --foreground:           25 20% 10%;   /* #1E1710 — warm near-black */
