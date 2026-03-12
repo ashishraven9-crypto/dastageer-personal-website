@@ -1,233 +1,118 @@
-'use client'
+import { ArrowDown, Linkedin, Mail, MapPin } from "lucide-react";
 
-import { motion } from 'framer-motion'
-import { Volume2, VolumeX, Menu, X } from 'lucide-react'
-import { useState, useRef, useEffect } from 'react'
-
-export function Hero() {
-  const [isMuted, setIsMuted] = useState(true)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY
-      setIsScrolled(scrollTop > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.volume = 0
-      videoRef.current.muted = true
-      videoRef.current.defaultMuted = true
-      
-      videoRef.current.addEventListener('play', () => {
-        if (videoRef.current) {
-          videoRef.current.muted = isMuted
-          videoRef.current.volume = isMuted ? 0 : 0.7
-        }
-      })
-      
-      const playPromise = videoRef.current.play()
-      if (playPromise !== undefined) {
-        playPromise.catch(error => console.error('Video autoplay failed:', error))
-      }
-    }
-  }, [])
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = isMuted
-      videoRef.current.volume = isMuted ? 0 : 0.7
-    }
-  }, [isMuted])
-
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-    return () => { document.body.style.overflow = 'unset' }
-  }, [isMobileMenuOpen])
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (isMobileMenuOpen) setIsMobileMenuOpen(false)
-    }
-    if (isMobileMenuOpen) window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [isMobileMenuOpen])
-
+const Hero = () => {
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-background">
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover scale-110"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src="https://mojli.s3.us-east-2.amazonaws.com/Mojli+Website+upscaled+(12mb).webm" type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Background gradient mesh */}
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 30% 40%, rgba(79,142,247,0.08) 0%, transparent 60%), radial-gradient(ellipse at 70% 60%, rgba(139,92,246,0.06) 0%, transparent 60%)" }} />
 
-      {/* Full-Width Navbar */}
-      <motion.nav
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="fixed top-0 left-0 right-0 w-full z-[110]"
-      >
-        <div 
-          className={`w-full px-6 sm:px-8 lg:px-12 py-4 transition-all duration-300 ease-out ${
-            isScrolled 
-              ? 'bg-background/80 backdrop-blur-xl border-b border-border' 
-              : 'bg-transparent'
-          }`}
-        >
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center cursor-pointer"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              <span className="font-bagel text-foreground text-xl tracking-wider">G.Md.Dastageer</span>
-            </motion.div>
+      {/* Floating particles */}
+      <div className="absolute top-24 left-16 w-2 h-2 rounded-full float-gentle opacity-40" style={{ background: "var(--accent-blue)" }} />
+      <div className="absolute top-48 right-24 w-3 h-3 rounded-full drift-left opacity-30" style={{ background: "var(--accent-teal)" }} />
+      <div className="absolute bottom-40 left-1/3 w-2 h-2 rounded-full drift-right opacity-35" style={{ background: "var(--accent-purple)" }} />
+      <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 rounded-full float-gentle opacity-25" style={{ background: "var(--accent-gold)", animationDelay: "2s" }} />
+      <div className="absolute bottom-1/3 right-16 w-2 h-2 rounded-full drift-left opacity-20" style={{ background: "var(--accent-teal)", animationDelay: "3s" }} />
 
-            {/* Navigation Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#portfolio" className="text-foreground/90 hover:text-foreground font-medium gentle-animation hover:scale-105">Work</a>
-              <a href="#about" className="text-foreground/90 hover:text-foreground font-medium gentle-animation hover:scale-105">Process</a>
-              <a href="#services" className="text-foreground/90 hover:text-foreground font-medium gentle-animation hover:scale-105">Expertise</a>
-              <a href="#team" className="text-foreground/90 hover:text-foreground font-medium gentle-animation hover:scale-105">Team</a>
-              <a href="#contact" className="text-foreground/90 hover:text-foreground font-medium gentle-animation hover:scale-105">Contact</a>
-            </div>
-
-            {/* Right Side */}
-            <div className="flex items-center space-x-3 relative">
-              <div className="relative">
-                <button
-                  onClick={() => setIsMuted(!isMuted)}
-                  className="glass-effect p-3 rounded-full text-foreground hover:bg-foreground/20 gentle-animation cursor-pointer"
-                >
-                  {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                </button>
-                {isMuted && (
-                  <div className="absolute -bottom-10 right-0 flex items-center text-foreground/80">
-                    <span className="whitespace-nowrap font-medium text-sm mr-2">Sound On</span>
-                    <span className="text-lg">↗</span>
-                  </div>
-                )}
-              </div>
-              
-              {/* CTA Button */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  const contactSection = document.getElementById('contact')
-                  contactSection?.scrollIntoView({ behavior: 'smooth' })
-                }}
-                className="hidden sm:block bg-primary backdrop-blur-sm text-primary-foreground font-semibold px-6 py-3 rounded-md hover:bg-primary/90 gentle-animation ml-4 cursor-pointer"
-              >
-                Get in Touch
-              </motion.button>
-
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden glass-effect p-3 rounded-full text-foreground hover:bg-foreground/20 active:bg-foreground/30 gentle-animation cursor-pointer z-[120] relative"
-              >
-                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
-          </div>
+      {/* Main content */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24">
+        {/* Status badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-card/60 text-xs font-medium text-muted-foreground mb-8 fade-in-up">
+          <span className="w-2 h-2 rounded-full pulse-glow" style={{ background: "var(--accent-teal)" }} />
+          Open to Opportunities &nbsp;·&nbsp; MBA Candidate &nbsp;·&nbsp; Bangalore, India
         </div>
-      </motion.nav>
 
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden fixed inset-0 bg-background/50 backdrop-blur-md z-[80] cursor-pointer"
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-      )}
+        {/* Name */}
+        <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-4 fade-in-up" style={{ animationDelay: "0.1s" }}>
+          Gooduru Mohammed
+          <br />
+          <span className="gradient-text">Dastageer</span>
+        </h1>
 
-      {/* Mobile Menu Panel */}
-      <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: isMobileMenuOpen ? '0%' : '100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="md:hidden fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-background/90 backdrop-blur-xl border-l border-border z-[90] mobile-menu-panel pointer-events-auto"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex flex-col h-full">
-          <div className="flex justify-end p-4">
-            <button
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="glass-effect p-3 rounded-full text-foreground hover:bg-foreground/20 active:bg-foreground/30 gentle-animation cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-          
-          <div className="flex flex-col px-6 pb-6 h-full">
-            <div className="flex flex-col space-y-4 text-foreground">
-              {['Work', 'Process', 'Expertise', 'Team', 'Contact'].map((item) => (
-                <a 
-                  key={item}
-                  href={`#${item === 'Work' ? 'portfolio' : item === 'Process' ? 'about' : item === 'Expertise' ? 'services' : item.toLowerCase()}`}
-                  className="mobile-menu-link px-4 py-3 hover:text-foreground/80 hover:bg-foreground/10 rounded-lg gentle-animation font-medium text-lg active:bg-foreground/20"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item}
-                </a>
-              ))}
+        {/* Tagline */}
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-3 fade-in-up" style={{ animationDelay: "0.2s" }}>
+          MBA Candidate &nbsp;·&nbsp; AI Product Manager &nbsp;·&nbsp; Medical Management Specialist
+        </p>
+
+        {/* Brief pitch */}
+        <p className="text-base text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed fade-in-up" style={{ animationDelay: "0.3s" }}>
+          Bridging the gap between{" "}
+          <span className="text-foreground font-medium">artificial intelligence</span>,{" "}
+          <span className="text-foreground font-medium">healthcare management</span>, and{" "}
+          <span className="text-foreground font-medium">strategic business thinking</span>{" "}
+          — building products and systems that create measurable real-world impact.
+        </p>
+
+        {/* CTAs */}
+        <div className="flex flex-wrap gap-4 justify-center mb-12 fade-in-up" style={{ animationDelay: "0.4s" }}>
+          <a
+            href="#projects"
+            className="px-6 py-3 rounded-xl font-semibold text-sm text-white transition-all hover:opacity-90 hover:-translate-y-0.5 gentle-animation"
+            style={{ background: "linear-gradient(135deg, var(--accent-blue), var(--accent-purple))" }}
+          >
+            View My Work
+          </a>
+          <a
+            href="#contact"
+            className="px-6 py-3 rounded-xl font-semibold text-sm border border-border text-foreground glass-card hover:-translate-y-0.5"
+          >
+            Get In Touch
+          </a>
+        </div>
+
+        {/* Social links */}
+        <div className="flex items-center justify-center gap-4 fade-in-up" style={{ animationDelay: "0.5s" }}>
+          <a
+            href="https://www.linkedin.com/in/mohammed-dastageer-g-a57019120"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Linkedin size={15} />
+            LinkedIn
+          </a>
+          <span className="w-1 h-1 rounded-full bg-border" />
+          <a
+            href="mailto:gmddasageer@gmail.com"
+            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Mail size={15} />
+            gmddasageer@gmail.com
+          </a>
+          <span className="w-1 h-1 rounded-full bg-border" />
+          <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+            <MapPin size={13} />
+            Bangalore
+          </span>
+        </div>
+
+        {/* Stats row */}
+        <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto mt-16 fade-in-up" style={{ animationDelay: "0.6s" }}>
+          {[
+            { value: "4+", label: "Years Experience" },
+            { value: "10+", label: "Certifications" },
+            { value: "2", label: "Key Domains" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-2xl font-bold gradient-text">{stat.value}</div>
+              <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
             </div>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const contactSection = document.getElementById('contact')
-                contactSection?.scrollIntoView({ behavior: 'smooth' })
-                setIsMobileMenuOpen(false)
-              }}
-              className="bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-lg hover:bg-primary/90 active:bg-primary/80 gentle-animation mt-8 cursor-pointer"
-            >
-              Get in Touch
-            </motion.button>
-          </div>
+          ))}
         </div>
-      </motion.div>
+      </div>
 
-      {/* Big Title - Lower Left */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-12 left-6 sm:left-8 lg:left-12 z-40"
+      {/* Scroll indicator */}
+      <a
+        href="#about"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-muted-foreground hover:text-foreground transition-colors float-gentle"
       >
-        <div className="max-w-2xl">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight text-foreground">
-            <span className="block">MANAGEMENT</span>
-            <span className="block">& AI</span>
-            <span className="block text-primary">WITHOUT LIMITS</span>
-          </h1>
-        </div>
-      </motion.div>
-    </div>
-  )
-}
+        <span className="text-xs font-medium tracking-widest uppercase opacity-60">Scroll</span>
+        <ArrowDown size={15} className="opacity-60" />
+      </a>
+    </section>
+  );
+};
+
+export default Hero;

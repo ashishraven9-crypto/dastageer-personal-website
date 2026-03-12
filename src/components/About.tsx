@@ -1,279 +1,125 @@
-'use client'
+import { Brain, HeartPulse, TrendingUp, Users } from "lucide-react";
 
-import { useEffect, useState } from 'react'
-import storyboardImage from '@/assets/storyboard-image.avif'
+const pillars = [
+  {
+    icon: Brain,
+    title: "AI Product Management",
+    description:
+      "Leveraging machine learning, deep learning, and AI-driven product strategies to design scalable, intelligent systems that solve real business problems.",
+    color: "var(--accent-blue)",
+  },
+  {
+    icon: HeartPulse,
+    title: "Medical Management",
+    description:
+      "Applying healthcare informatics, IoT-based monitoring systems, and data-driven clinical decision support to modernize healthcare delivery.",
+    color: "var(--accent-teal)",
+  },
+  {
+    icon: TrendingUp,
+    title: "Strategic Business Thinking",
+    description:
+      "MBA-level frameworks for market analysis, competitive strategy, and cross-functional leadership — translating vision into executable roadmaps.",
+    color: "var(--accent-purple)",
+  },
+  {
+    icon: Users,
+    title: "Team Leadership",
+    description:
+      "Proven ability to manage, motivate, and train high-performing teams in high-pressure environments, driving 90%+ satisfaction outcomes.",
+    color: "var(--accent-gold)",
+  },
+];
 
-export function About() {
-  const [activeFrame, setActiveFrame] = useState(-1)
-  const [animationStarted, setAnimationStarted] = useState(false)
-
-  const processSteps = [
-    {
-      number: "01",
-      title: "Research & Discovery",
-      description: "Deep-dive analysis of business landscape and objectives",
-      color: "accent-blue"
-    },
-    {
-      number: "02", 
-      title: "Strategy Design",
-      description: "AI-augmented framework development and roadmap planning",
-      color: "accent-emerald"
-    },
-    {
-      number: "03",
-      title: "Implementation",
-      description: "Agile execution with data-driven iteration cycles",
-      color: "accent-purple"
-    },
-    {
-      number: "04",
-      title: "Optimization",
-      description: "Performance tuning, analytics, and continuous improvement",
-      color: "accent-blue"
-    },
-    {
-      number: "05",
-      title: "Delivery & Scale",
-      description: "Final handoff with documentation and growth frameworks",
-      color: "accent-purple"
-    }
-  ]
-
-  useEffect(() => {
-    setTimeout(() => {
-      setAnimationStarted(true)
-      processSteps.forEach((_, index) => {
-        setTimeout(() => {
-          setActiveFrame(index)
-        }, index * 2000 + 1000)
-      })
-    }, 3000)
-  }, [])
-
+const About = () => {
   return (
-    <section id="about" className="relative py-20 bg-background overflow-hidden">
-      
-      {/* Cinematic Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/20 to-background" />
-      
-      {/* Film Grain Effect */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
-        <div className="w-full h-full" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0,0,0,0.8) 1px, transparent 0)`,
-          backgroundSize: '3px 3px',
-          animation: 'filmGrain 8s infinite'
-        }} />
-      </div>
-
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-3 h-3 bg-accent-emerald rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-muted-foreground">
-              Behind the Scenes
-            </span>
-            <div className="w-3 h-3 bg-accent-blue rounded-full animate-pulse" />
-          </div>
-          
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-6 text-foreground">
-            How I Work
+    <section id="about" className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
+        {/* Section header */}
+        <div className="mb-16">
+          <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-3" style={{ color: "var(--accent-blue)" }}>
+            About Me
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 max-w-2xl">
+            Where Technology Meets{" "}
+            <span className="gradient-text">Healthcare Strategy</span>
           </h2>
-          
-          <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            A structured approach to delivering results, step by step
+          <div className="section-divider mb-8" />
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl">
+            I am a final-year B.Tech (EEE) graduate from Amrita School of Engineering, Bangalore,
+            currently pursuing my MBA with a dual focus on{" "}
+            <span className="text-foreground font-medium">AI Product Management</span> and{" "}
+            <span className="text-foreground font-medium">Medical Management</span>. With over four
+            years of hands-on experience spanning electrical engineering, full-stack development,
+            machine learning, and healthcare IoT systems, I bring a uniquely interdisciplinary
+            perspective to every challenge I tackle.
           </p>
         </div>
 
-        {/* Film Strip Container */}
-        <div className="relative max-w-7xl mx-auto">
-          
-          {/* Film Strip Background */}
-          <div className="relative bg-gradient-to-r from-card via-secondary to-card rounded-xl overflow-hidden"
-               style={{ boxShadow: '0 25px 50px rgba(0,0,0,0.5), inset 0 2px 0 rgba(255,255,255,0.05)' }}>
-            
-            {/* Film Perforations - Top */}
-            <div className="absolute top-0 left-0 right-0 h-6 bg-background z-20 overflow-hidden">
-              <div className={`flex items-center justify-between px-12 h-full ${
-                animationStarted ? 'perforations-scroll-animation' : ''
-              }`} style={{ width: '200%' }}>
-                {[...Array(20)].map((_, i) => (
-                  <div key={`top-${i}`} className="w-4 h-3 bg-secondary rounded-sm border border-border flex-shrink-0" 
-                       style={{ boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.8)' }} />
-                ))}
-                {[...Array(20)].map((_, i) => (
-                  <div key={`top-dup-${i}`} className="w-4 h-3 bg-secondary rounded-sm border border-border flex-shrink-0" 
-                       style={{ boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.8)' }} />
-                ))}
-              </div>
-            </div>
-            
-            {/* Film Perforations - Bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-6 bg-background z-20 overflow-hidden">
-              <div className={`flex items-center justify-between px-12 h-full ${
-                animationStarted ? 'perforations-scroll-animation' : ''
-              }`} style={{ width: '200%' }}>
-                {[...Array(20)].map((_, i) => (
-                  <div key={`bottom-${i}`} className="w-4 h-3 bg-secondary rounded-sm border border-border flex-shrink-0"
-                       style={{ boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.8)' }} />
-                ))}
-                {[...Array(20)].map((_, i) => (
-                  <div key={`bottom-dup-${i}`} className="w-4 h-3 bg-secondary rounded-sm border border-border flex-shrink-0"
-                       style={{ boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.8)' }} />
-                ))}
-              </div>
-            </div>
-
-            {/* Film Frames Container */}
-            <div className="relative py-6 px-8 overflow-hidden h-64 max-w-full">
-              <div className={`flex transition-transform duration-1000 ease-in-out ${
-                animationStarted ? 'film-scroll-animation' : ''
-              }`} style={{ width: 'max-content', gap: '32px' }}>
-                
-                <div className="flex-shrink-0 w-80 h-52 bg-secondary rounded-lg border-2 border-border opacity-60 flex items-center justify-center" 
-                     style={{ boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.4)' }}>
-                  <div className="text-muted-foreground font-mono tracking-wider">● START</div>
-                </div>
-                
-                {processSteps.map((step, index) => (
-                  <div
-                    key={step.number}
-                    className={`flex-shrink-0 w-80 h-52 bg-background rounded-lg border-4 ${
-                      activeFrame >= index 
-                        ? `border-${step.color}` 
-                        : 'border-border'
-                    }`}
-                    style={{ boxShadow: '0 8px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)' }}
-                  >
-                    <div className="relative h-full p-6 flex flex-col justify-between">
-                      <div className="absolute -top-4 -left-4 w-12 h-12 bg-foreground text-background rounded-full flex items-center justify-center font-black z-10 border-3 border-border text-lg"
-                           style={{ boxShadow: '0 6px 12px rgba(0,0,0,0.4)' }}>
-                        {step.number}
-                      </div>
-                      <div className="opacity-100">
-                        <h3 className="font-black text-xl leading-tight mb-4 text-foreground">{step.title}</h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
-                      </div>
-                      <div className="absolute left-1 top-1 bottom-1 w-px bg-border/20" />
-                      <div className="absolute right-1 top-1 bottom-1 w-px bg-border/20" />
-                      <div className="absolute top-1 left-1 right-1 h-px bg-border/20" />
-                      <div className="absolute bottom-1 left-1 right-1 h-px bg-border/20" />
-                    </div>
-                  </div>
-                ))}
-                
-                <div className="flex-shrink-0 w-80 h-52 bg-secondary rounded-lg border-2 border-border opacity-60 flex items-center justify-center"
-                     style={{ boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.4)' }}>
-                  <div className="text-muted-foreground font-mono tracking-wider">● END</div>
-                </div>
-                
-                {/* Duplicate for seamless loop */}
-                <div className="flex-shrink-0 w-80 h-52 bg-secondary rounded-lg border-2 border-border opacity-60 flex items-center justify-center" 
-                     style={{ boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.4)' }}>
-                  <div className="text-muted-foreground font-mono tracking-wider">● START</div>
-                </div>
-                
-                {processSteps.map((step, index) => (
-                  <div
-                    key={`duplicate-${step.number}`}
-                    className={`flex-shrink-0 w-80 h-52 bg-background rounded-lg border-4 ${
-                      activeFrame >= index 
-                        ? `border-${step.color}` 
-                        : 'border-border'
-                    }`}
-                    style={{ boxShadow: '0 8px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)' }}
-                  >
-                    <div className="relative h-full p-6 flex flex-col justify-between">
-                      <div className="absolute -top-4 -left-4 w-12 h-12 bg-foreground text-background rounded-full flex items-center justify-center font-black z-10 border-3 border-border text-lg"
-                           style={{ boxShadow: '0 6px 12px rgba(0,0,0,0.4)' }}>
-                        {step.number}
-                      </div>
-                      <div className="opacity-100">
-                        <h3 className="font-black text-xl leading-tight mb-4 text-foreground">{step.title}</h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
-                      </div>
-                      <div className="absolute left-1 top-1 bottom-1 w-px bg-border/20" />
-                      <div className="absolute right-1 top-1 bottom-1 w-px bg-border/20" />
-                      <div className="absolute top-1 left-1 right-1 h-px bg-border/20" />
-                      <div className="absolute bottom-1 left-1 right-1 h-px bg-border/20" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          
-          {/* Projector Light */}
-          {activeFrame >= 0 && (
-            <div className="absolute inset-0 pointer-events-none">
-              <div 
-                className="absolute top-1/2 left-1/2 w-48 h-48 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-10"
-                style={{
-                  background: 'radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 20%, rgba(255,255,0,0.2) 40%, transparent 60%)',
-                  animation: 'projectorLight 12s ease-in-out infinite'
-                }}
-              />
-            </div>
-          )}
-        </div>
-
-        {/* Film Controls */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-6 bg-card/80 backdrop-blur-sm clean-border rounded-2xl px-8 py-4 subtle-shadow">
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-accent-emerald rounded-full animate-pulse" />
-              <span className="text-sm font-semibold text-foreground">Agile</span>
-            </div>
-            <div className="w-px h-6 bg-border" />
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-accent-blue rounded-full animate-pulse" style={{animationDelay: '0.5s'}} />
-              <span className="text-sm font-semibold text-foreground">2-4 Weeks</span>
-            </div>
-            <div className="w-px h-6 bg-border" />
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-accent-purple rounded-full animate-pulse" style={{animationDelay: '1s'}} />
-              <span className="text-sm font-semibold text-foreground">Enterprise Quality</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Gallery */}
-        <div className="mt-20">
-          <div className="text-center mb-8">
-            <p className="text-muted-foreground">
-              A glimpse into our strategic development process
+        {/* Two-column layout */}
+        <div className="grid md:grid-cols-2 gap-12 items-start mb-20">
+          {/* Left: narrative */}
+          <div className="space-y-5">
+            <p className="text-muted-foreground leading-relaxed">
+              My research publication on{" "}
+              <em className="text-foreground">"Implementation of Healthcare Monitoring using Raspberry Pi"</em>{" "}
+              exemplifies my commitment to applying technology where it matters most — in clinical
+              environments that demand precision, reliability, and user-centric design.
             </p>
+            <p className="text-muted-foreground leading-relaxed">
+              I thrive in environments that foster continuous learning, cross-disciplinary
+              collaboration, and high-impact problem-solving. Whether it is architecting a
+              cloud-native health monitoring platform or crafting a go-to-market strategy for an
+              AI-powered product, I bring both technical depth and strategic clarity.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              My goal is to join forward-thinking organizations — healthcare enterprises, AI/tech
+              companies, or consulting firms — where I can drive meaningful transformation at the
+              intersection of medicine, data, and business.
+            </p>
+
+            {/* Quick facts */}
+            <div className="grid grid-cols-2 gap-4 pt-4">
+              {[
+                { label: "Location", value: "Bangalore, India" },
+                { label: "Phone", value: "+91 9490133147" },
+                { label: "Email", value: "gmddasageer@gmail.com" },
+                { label: "Availability", value: "Immediate" },
+              ].map((fact) => (
+                <div key={fact.label} className="glass-card rounded-lg p-4">
+                  <div className="text-xs text-muted-foreground mb-1">{fact.label}</div>
+                  <div className="text-sm font-medium text-foreground truncate">{fact.value}</div>
+                </div>
+              ))}
+            </div>
           </div>
-          
-          <div className="relative max-w-6xl mx-auto">
-            <div className="relative bg-gradient-to-br from-card via-secondary to-card rounded-2xl p-4 overflow-hidden">
-              <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                   style={{
-                     backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.8) 1px, transparent 0)`,
-                     backgroundSize: '4px 4px'
-                   }} />
-              <img 
-                src={storyboardImage}
-                alt="Collection of project deliverables showcasing diverse output"
-                className="w-full h-auto rounded-xl"
-                style={{ filter: 'contrast(1.05) saturate(1.1) brightness(0.95)' }}
-              />
-              <div className="absolute inset-4 rounded-xl pointer-events-none"
-                   style={{
-                     background: 'linear-gradient(135deg, rgba(201,168,76,0.03) 0%, transparent 20%, transparent 80%, rgba(184,134,11,0.03) 100%)'
-                   }} />
-            </div>
-            
-            <div className="mt-6 text-center">
-              <p className="text-sm text-muted-foreground italic">
-                "Diverse scenarios, frameworks, and strategies — all powered by our AI-augmented methodology"
-              </p>
-            </div>
+
+          {/* Right: core pillars */}
+          <div className="space-y-4">
+            {pillars.map((pillar) => {
+              const Icon = pillar.icon;
+              return (
+                <div key={pillar.title} className="glass-card rounded-xl p-5 flex gap-4">
+                  <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${pillar.color}18`, border: `1px solid ${pillar.color}30` }}
+                  >
+                    <Icon size={18} style={{ color: pillar.color }} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1">{pillar.title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {pillar.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default About;

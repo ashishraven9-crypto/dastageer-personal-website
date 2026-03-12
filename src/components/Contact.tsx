@@ -1,140 +1,217 @@
-'use client'
+import { Mail, Phone, Linkedin, MapPin, Send, MessageSquare, Briefcase, Users } from "lucide-react";
+import { useState } from "react";
 
-import { useEffect } from 'react'
+const services = [
+  {
+    icon: Briefcase,
+    title: "AI Product Strategy",
+    description: "End-to-end AI product roadmapping, feature prioritization, and go-to-market strategy for healthcare and enterprise AI products.",
+    color: "var(--accent-blue)",
+  },
+  {
+    icon: MessageSquare,
+    title: "Healthcare Technology Consulting",
+    description: "Advisory on digital health transformation, IoT implementation, and clinical workflow optimization for hospitals and health-tech startups.",
+    color: "var(--accent-teal)",
+  },
+  {
+    icon: Users,
+    title: "MBA Mentorship & Collaboration",
+    description: "Open to collaborative research, case study partnerships, and peer mentorship with fellow MBA students and early-career professionals.",
+    color: "var(--accent-purple)",
+  },
+];
 
-export function Contact() {
+const Contact = () => {
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [sent, setSent] = useState(false);
 
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.innerHTML = `
-      (function (C, A, L) { 
-        let p = function (a, ar) { a.q.push(ar); }; 
-        let d = C.document; 
-        C.Cal = C.Cal || function () { 
-          let cal = C.Cal; 
-          let ar = arguments; 
-          if (!cal.loaded) { 
-            cal.ns = {}; 
-            cal.q = cal.q || []; 
-            d.head.appendChild(d.createElement("script")).src = A; 
-            cal.loaded = true; 
-          } 
-          if (ar[0] === L) { 
-            const api = function () { p(api, arguments); }; 
-            const namespace = ar[1]; 
-            api.q = api.q || []; 
-            if(typeof namespace === "string"){
-              cal.ns[namespace] = cal.ns[namespace] || api;
-              p(cal.ns[namespace], ar);
-              p(cal, ["initNamespace", namespace]);
-            } else p(cal, ar); 
-            return;
-          } 
-          p(cal, ar); 
-        }; 
-      })(window, "https://app.cal.com/embed/embed.js", "init");
-      
-      Cal("init", "discovery-call", {origin:"https://app.cal.com"});
-      
-      Cal.ns["discovery-call"]("inline", {
-        elementOrSelector:"#my-cal-inline-discovery-call",
-        config: {"layout":"month_view"},
-        calLink: "zeroqode/30min",
-      });
-      
-      Cal.ns["discovery-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-    `
-    
-    document.body.appendChild(script)
-    
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script)
-      }
-    }
-  }, [])
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In a real deployment this would POST to a backend / email service
+    setSent(true);
+  };
 
   return (
-    <section id="contact" className="relative py-32 bg-card/30">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="w-3 h-3 bg-accent-emerald rounded-full animate-pulse" />
-            <span className="text-sm font-semibold text-muted-foreground">Let's Connect</span>
-            <div className="w-3 h-3 bg-accent-blue rounded-full animate-pulse" />
-          </div>
-          
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-8 text-foreground">
-            <span className="block mb-2">Ready to Get Started?</span>
+    <section id="contact" className="py-24 px-6" style={{ background: "rgba(255,255,255,0.01)" }}>
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="mb-16 text-center">
+          <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--accent-blue)" }}>
+            Contact & Services
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Let's Build Something{" "}
+            <span className="gradient-text">Meaningful Together</span>
           </h2>
-          
-          <p className="text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Book a discovery call to discuss your project and explore how management expertise and AI can drive results
+          <div className="section-divider mx-auto mb-6" />
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Whether you are a recruiter, a healthcare organization, an AI/tech company, or an investor —
+            I would love to connect and explore how we can create impact together.
           </p>
         </div>
 
-        {/* Cal.com Booking Widget */}
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-background clean-border rounded-3xl overflow-hidden elevated-shadow">
-            {/* Widget Header */}
-            <div className="bg-card/50 px-8 py-6 border-b border-border">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-xl font-black text-foreground mb-1">
-                    Discovery Call
-                  </h3>
-                  <p className="text-muted-foreground">
-                    30 minutes • Video call • Free consultation
-                  </p>
+        {/* Services */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {services.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div key={s.title} className="glass-card rounded-2xl p-6 text-center">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
+                  style={{ background: `${s.color}15`, border: `1px solid ${s.color}30` }}
+                >
+                  <Icon size={20} style={{ color: s.color }} />
                 </div>
-                <div className="hidden sm:flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-accent-emerald rounded-full" />
-                  <span className="text-sm text-muted-foreground font-medium">Available now</span>
-                </div>
+                <h3 className="font-semibold text-foreground mb-2">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.description}</p>
               </div>
-            </div>
-            
-            {/* Cal.com Embed Container */}
-            <div className="p-0 bg-card">
-              <div 
-                style={{ width: '100%', height: '600px', overflow: 'scroll' }} 
-                id="my-cal-inline-discovery-call"
-              />
-            </div>
-          </div>
+            );
+          })}
         </div>
 
-        {/* Bottom Info */}
-        <div className="text-center mt-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-background clean-border rounded-2xl p-6 subtle-shadow">
-              <div className="w-12 h-12 bg-accent-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-accent-blue rounded-full" />
-              </div>
-              <h4 className="font-black text-foreground mb-2">Project Discussion</h4>
-              <p className="text-muted-foreground text-sm">Share your vision and requirements</p>
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact info */}
+          <div>
+            <h3 className="text-xl font-semibold text-foreground mb-6">Get In Touch</h3>
+            <div className="space-y-4 mb-8">
+              {[
+                { icon: Mail, label: "Email", value: "gmddasageer@gmail.com", href: "mailto:gmddasageer@gmail.com", color: "var(--accent-blue)" },
+                { icon: Phone, label: "Phone", value: "+91 9490133147", href: "tel:+919490133147", color: "var(--accent-teal)" },
+                { icon: Linkedin, label: "LinkedIn", value: "mohammed-dastageer-g", href: "https://www.linkedin.com/in/mohammed-dastageer-g-a57019120", color: "var(--accent-purple)" },
+                { icon: MapPin, label: "Location", value: "Bangalore, India", href: "#", color: "var(--accent-gold)" },
+              ].map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 glass-card rounded-xl p-4 group"
+                  >
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: `${item.color}15`, border: `1px solid ${item.color}30` }}
+                    >
+                      <Icon size={16} style={{ color: item.color }} />
+                    </div>
+                    <div>
+                      <div className="text-xs text-muted-foreground">{item.label}</div>
+                      <div className="text-sm font-medium text-foreground group-hover:text-white transition-colors">
+                        {item.value}
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
             </div>
-            
-            <div className="bg-background clean-border rounded-2xl p-6 subtle-shadow">
-              <div className="w-12 h-12 bg-accent-emerald/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-accent-emerald rounded-full" />
+
+            {/* Availability */}
+            <div
+              className="glass-card rounded-xl p-5"
+              style={{ borderColor: "rgba(20,184,166,0.3)" }}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-2 h-2 rounded-full pulse-glow" style={{ background: "var(--accent-teal)" }} />
+                <span className="text-sm font-semibold text-foreground">Available for Opportunities</span>
               </div>
-              <h4 className="font-black text-foreground mb-2">Custom Strategy</h4>
-              <p className="text-muted-foreground text-sm">Get a tailored approach for your needs</p>
+              <p className="text-xs text-muted-foreground">
+                Currently open to full-time roles, internships, consulting engagements, and collaborative research projects in AI PM, healthcare technology, and business strategy.
+              </p>
             </div>
-            
-            <div className="bg-background clean-border rounded-2xl p-6 subtle-shadow">
-              <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-accent-purple rounded-full" />
+          </div>
+
+          {/* Contact form */}
+          <div>
+            <h3 className="text-xl font-semibold text-foreground mb-6">Send a Message</h3>
+            {sent ? (
+              <div className="glass-card rounded-2xl p-8 text-center">
+                <div className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: "rgba(20,184,166,0.15)" }}>
+                  <Send size={22} style={{ color: "var(--accent-teal)" }} />
+                </div>
+                <h4 className="font-bold text-foreground mb-2">Message Sent!</h4>
+                <p className="text-sm text-muted-foreground">Thank you for reaching out. I'll get back to you within 24 hours.</p>
               </div>
-              <h4 className="font-black text-foreground mb-2">Next Steps</h4>
-              <p className="text-muted-foreground text-sm">Clear timeline and roadmap to results</p>
-            </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-xs text-muted-foreground mb-1.5 block font-medium">Full Name</label>
+                    <input
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Your name"
+                      className="w-full px-4 py-3 rounded-xl text-sm text-foreground placeholder:text-muted-foreground outline-none focus:ring-1 transition-all"
+                      style={{ background: "var(--card)", border: "1px solid var(--border)", focusRingColor: "var(--accent-blue)" }}
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs text-muted-foreground mb-1.5 block font-medium">Email Address</label>
+                    <input
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="your@email.com"
+                      className="w-full px-4 py-3 rounded-xl text-sm text-foreground placeholder:text-muted-foreground outline-none transition-all"
+                      style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground mb-1.5 block font-medium">Subject</label>
+                  <select
+                    name="subject"
+                    value={form.subject}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl text-sm text-foreground outline-none transition-all"
+                    style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+                  >
+                    <option value="">Select a topic...</option>
+                    <option value="job">Job / Internship Opportunity</option>
+                    <option value="consulting">Consulting / Advisory</option>
+                    <option value="research">Research Collaboration</option>
+                    <option value="mentorship">Mentorship</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="text-xs text-muted-foreground mb-1.5 block font-medium">Message</label>
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    placeholder="Tell me about the opportunity or how I can help..."
+                    className="w-full px-4 py-3 rounded-xl text-sm text-foreground placeholder:text-muted-foreground outline-none transition-all resize-none"
+                    style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full py-3 rounded-xl font-semibold text-sm text-white flex items-center justify-center gap-2 hover:opacity-90 transition-opacity gentle-animation"
+                  style={{ background: "linear-gradient(135deg, var(--accent-blue), var(--accent-purple))" }}
+                >
+                  <Send size={15} />
+                  Send Message
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Contact;
