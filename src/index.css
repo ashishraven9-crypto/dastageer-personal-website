@@ -349,6 +349,229 @@
   ::-webkit-scrollbar-thumb { background: hsl(var(--beige-warm)); border-radius: 2px; }
   ::-webkit-scrollbar-thumb:hover { background: hsl(var(--sand)); }
 
+  /* ─────────────────────────────────────────────────────────────────────────
+     A/B VARIANT PALETTES
+  ───────────────────────────────────────────────────────────────────────── */
+
+  /* Variant A: Warm Beige (default :root) — no extra class needed */
+
+  /* Variant B: Midnight Dark */
+  .variant-midnight {
+    --background:           230 15% 7%;    /* #0F1117 */
+    --foreground:           220 20% 92%;   /* #E8EAF0 */
+    --card:                 230 12% 10%;   /* #161820 */
+    --card-foreground:      220 20% 92%;
+    --popover:              230 15% 7%;
+    --popover-foreground:   220 20% 92%;
+    --primary:              245 80% 65%;   /* #6366F1 indigo */
+    --primary-foreground:   0 0% 100%;
+    --secondary:            230 10% 15%;
+    --secondary-foreground: 220 20% 92%;
+    --muted:                230 10% 14%;
+    --muted-foreground:     220 10% 55%;
+    --accent:               245 80% 65%;
+    --accent-foreground:    0 0% 100%;
+    --border:               230 10% 18%;
+    --input:                230 10% 18%;
+    --ring:                 245 80% 65%;
+    --tag-ai:               245 40% 22%;
+    --tag-health:           160 30% 18%;
+    --tag-strategy:         30 20% 18%;
+    --tag-mba:              280 25% 20%;
+    --tag-tech:             200 30% 20%;
+    --tag-research:         340 25% 20%;
+    --tag-leadership:       60 20% 18%;
+    --surface-elevated:     230 12% 12%;
+    --shadow-soft:          245 80% 10%;
+    --glow-color:           245 80% 65%;
+    --beige-light:          230 10% 14%;
+    --beige-mid:            230 10% 12%;
+    --beige-warm:           245 30% 20%;
+    --sand:                 245 20% 25%;
+  }
+
+  /* Variant C: Forest Green */
+  .variant-forest {
+    --background:           150 20% 96%;   /* #F0F7F4 */
+    --foreground:           160 30% 10%;   /* #0D1F18 */
+    --card:                 150 25% 98%;   /* #F5FAF8 */
+    --card-foreground:      160 30% 10%;
+    --popover:              150 20% 96%;
+    --popover-foreground:   160 30% 10%;
+    --primary:              160 60% 38%;   /* #10B981 emerald */
+    --primary-foreground:   0 0% 100%;
+    --secondary:            150 15% 90%;
+    --secondary-foreground: 160 30% 10%;
+    --muted:                150 12% 91%;
+    --muted-foreground:     160 15% 45%;
+    --accent:               160 50% 35%;
+    --accent-foreground:    0 0% 100%;
+    --border:               150 15% 83%;
+    --input:                150 15% 83%;
+    --ring:                 160 60% 38%;
+    --tag-ai:               200 30% 87%;
+    --tag-health:           150 30% 84%;
+    --tag-strategy:         160 20% 86%;
+    --tag-mba:              140 25% 86%;
+    --tag-tech:             180 25% 86%;
+    --tag-research:         120 20% 86%;
+    --tag-leadership:       100 20% 86%;
+    --surface-elevated:     150 25% 99%;
+    --shadow-soft:          160 40% 12%;
+    --glow-color:           160 60% 38%;
+    --beige-light:          150 20% 93%;
+    --beige-mid:            150 18% 89%;
+    --beige-warm:           155 25% 82%;
+    --sand:                 155 20% 76%;
+  }
+
+  /* ── Scroll progress bar ── */
+  .scroll-progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    z-index: 9995;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    transition: width 0.1s linear;
+    pointer-events: none;
+  }
+
+  /* ── Magnetic card wrapper ── */
+  .magnetic-card {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+  }
+
+  /* ── Staggered text reveal ── */
+  .text-reveal-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .text-reveal-word.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Glitch effect ── */
+  .glitch {
+    position: relative;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+  }
+  .glitch:hover::before {
+    animation: glitch-1 0.3s steps(2) forwards;
+    color: hsl(var(--primary));
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    opacity: 0.7;
+  }
+  .glitch:hover::after {
+    animation: glitch-2 0.3s steps(2) forwards;
+    color: hsl(var(--accent));
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+    opacity: 0.7;
+  }
+
+  /* ── Floating badge pulse ── */
+  .badge-pulse {
+    animation: badge-float 3s ease-in-out infinite;
+  }
+  .badge-pulse:nth-child(2) { animation-delay: 0.8s; }
+  .badge-pulse:nth-child(3) { animation-delay: 1.6s; }
+
+  /* ── Morphing blob background ── */
+  .morph-blob {
+    animation: blob 10s ease-in-out infinite;
+    will-change: border-radius;
+  }
+  .morph-blob-2 {
+    animation: blob 14s ease-in-out infinite reverse;
+    animation-delay: -4s;
+    will-change: border-radius;
+  }
+  .morph-blob-3 {
+    animation: blob 18s ease-in-out infinite;
+    animation-delay: -8s;
+    will-change: border-radius;
+  }
+
+  /* ── Tilt card 3D ── */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* ── Spotlight hover effect ── */
+  .spotlight {
+    position: relative;
+    overflow: hidden;
+  }
+  .spotlight::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+  .spotlight:hover::before { opacity: 1; }
+
+  /* ── New keyframes ── */
+  @keyframes glitch-1 {
+    0%   { transform: translateX(-3px); }
+    50%  { transform: translateX(3px); }
+    100% { transform: translateX(0); }
+  }
+  @keyframes glitch-2 {
+    0%   { transform: translateX(3px); }
+    50%  { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
+  }
+  @keyframes badge-float {
+    0%, 100% { transform: translateY(0px) rotate(-2deg); }
+    50%       { transform: translateY(-8px) rotate(2deg); }
+  }
+  @keyframes count-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes draw-line {
+    from { stroke-dashoffset: 1000; }
+    to   { stroke-dashoffset: 0; }
+  }
+  @keyframes wave {
+    0%, 100% { transform: scaleY(0.5); }
+    50%       { transform: scaleY(1.5); }
+  }
+  @keyframes orbit {
+    from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+  }
+  @keyframes gradient-shift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+  .animate-orbit { animation: orbit 8s linear infinite; }
+  .animate-wave  { animation: wave  1.2s ease-in-out infinite; }
+
   /* ── Mobile: reduce motion for performance ── */
   @media (max-width: 640px) {
     .glow-card:hover { transform: none; }
