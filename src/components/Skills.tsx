@@ -1,8 +1,10 @@
+import { ArrowUpRight } from "lucide-react";
+
 const skillCategories = [
   {
     title: "Generative AI & LLM Engineering",
-    color: "var(--accent-green)",
-    badgeClass: "skill-badge",
+    tagLabel: "AI / LLM",
+    tagClass: "tag-ai",
     description: "Cutting-edge AI tools and frameworks for building intelligent products",
     skills: [
       "Prompt Engineering Strategy",
@@ -19,8 +21,8 @@ const skillCategories = [
   },
   {
     title: "AI Automation & No-Code Tools",
-    color: "var(--accent-cyan)",
-    badgeClass: "skill-badge-cyan",
+    tagLabel: "Automation",
+    tagClass: "tag-tech",
     description: "Modern AI-powered automation and development platforms",
     skills: [
       "n8n (AI Workflow Automation)",
@@ -36,8 +38,8 @@ const skillCategories = [
   },
   {
     title: "AI Product Management",
-    color: "var(--accent-violet)",
-    badgeClass: "skill-badge-violet",
+    tagLabel: "Strategy",
+    tagClass: "tag-mba",
     description: "Strategic frameworks for building and scaling AI products",
     skills: [
       "AI Product Roadmapping",
@@ -52,8 +54,8 @@ const skillCategories = [
   },
   {
     title: "Medical & Healthcare Tech",
-    color: "var(--accent-cyan)",
-    badgeClass: "skill-badge-cyan",
+    tagLabel: "Healthcare",
+    tagClass: "tag-health",
     description: "Healthcare informatics and clinical technology systems",
     skills: [
       "Healthcare IoT",
@@ -68,8 +70,8 @@ const skillCategories = [
   },
   {
     title: "Data & Analytics",
-    color: "var(--accent-amber)",
-    badgeClass: "skill-badge-amber",
+    tagLabel: "Data",
+    tagClass: "tag-leadership",
     description: "Data-driven decision making and business intelligence",
     skills: [
       "Python",
@@ -78,14 +80,12 @@ const skillCategories = [
       "SQL / DBMS",
       "Data Analysis",
       "Deep Learning",
-      "Matlab",
-      "Hadoop",
     ],
   },
   {
     title: "Engineering & DevOps",
-    color: "var(--accent-green)",
-    badgeClass: "skill-badge",
+    tagLabel: "Engineering",
+    tagClass: "tag-strategy",
     description: "Full-stack development and cloud infrastructure",
     skills: [
       "React / Vue.js / Node.js",
@@ -93,102 +93,121 @@ const skillCategories = [
       "Docker / Kubernetes",
       "AWS IoT",
       "DevOps / CI-CD",
-      "Cyber Security",
       "MERN Stack",
-      "Shell Scripting",
     ],
   },
 ];
 
 const certs = [
-  { name: "Google — Fundamentals of Digital Marketing",                        issuer: "Google" },
-  { name: "AWS IoT Device Management",                                          issuer: "Amazon Web Services" },
-  { name: "MITRE ATT&CK Defender™ (MAD) — Cyber Threat Intelligence",         issuer: "Cybrary" },
-  { name: "12-Factor App",                                                       issuer: "Kode Kloud" },
-  { name: "Cybersecurity Virtual Experience Program",                            issuer: "Forage" },
-  { name: "Multi-Cloud Network Associate",                                       issuer: "Aviatrix" },
-  { name: "CCNA — Routing & Switching",                                         issuer: "The Digital Adda" },
-  { name: "Introduction to Physical Computing",                                  issuer: "Lancaster University & Institute of Coding" },
-  { name: "Prompt Engineering for Developers",                                   issuer: "DeepLearning.AI" },
-  { name: "LangChain for LLM Application Development",                          issuer: "DeepLearning.AI" },
+  { name: "Prompt Engineering for Developers",                                   issuer: "DeepLearning.AI",                          tag: "tag-ai" },
+  { name: "LangChain for LLM Application Development",                          issuer: "DeepLearning.AI",                          tag: "tag-ai" },
+  { name: "Google — Fundamentals of Digital Marketing",                         issuer: "Google",                                   tag: "tag-leadership" },
+  { name: "AWS IoT Device Management",                                           issuer: "Amazon Web Services",                      tag: "tag-tech" },
+  { name: "MITRE ATT&CK Defender™ (MAD) — Cyber Threat Intelligence",          issuer: "Cybrary",                                  tag: "tag-strategy" },
+  { name: "12-Factor App",                                                        issuer: "Kode Kloud",                               tag: "tag-tech" },
+  { name: "Cybersecurity Virtual Experience Program",                             issuer: "Forage",                                   tag: "tag-strategy" },
+  { name: "Multi-Cloud Network Associate",                                        issuer: "Aviatrix",                                 tag: "tag-tech" },
+  { name: "CCNA — Routing & Switching",                                          issuer: "The Digital Adda",                         tag: "tag-tech" },
+  { name: "Introduction to Physical Computing",                                   issuer: "Lancaster University & Institute of Coding", tag: "tag-health" },
+];
+
+const competencies = [
+  { name: "Generative AI & Prompt Engineering", pct: 88 },
+  { name: "AI Automation (n8n, Cursor, Lovable)", pct: 85 },
+  { name: "AI Product Management",               pct: 82 },
+  { name: "Healthcare Technology",               pct: 80 },
+  { name: "Full Stack Development",              pct: 84 },
+  { name: "Data Analysis & ML",                  pct: 78 },
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 px-6" style={{ background: "rgba(16,185,129,0.015)" }}>
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="py-10 px-4">
+      <div className="max-w-5xl mx-auto">
 
-        {/* Header */}
-        <div className="mb-16">
-          <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--accent-green)" }}>
-            Skills & Expertise
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-syne">
-            A Multidisciplinary{" "}
-            <span className="gradient-text">Skill Stack</span>
+        {/* Section label */}
+        <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground font-sans mb-4">
+          Skills &amp; Expertise
+        </p>
+
+        {/* Section heading card */}
+        <div className="rounded-4xl bg-card border border-border p-8 md:p-12 mb-5">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold leading-tight text-foreground mb-3">
+            A Multidisciplinary <em className="not-italic text-accent">Skill Stack</em>
           </h2>
-          <div className="section-divider mb-4" />
-          <p className="text-muted-foreground max-w-xl">
-            From cutting-edge LLM engineering and AI automation to healthcare technology and MBA-level strategy — a skill set built for the AI era.
+          <p className="text-muted-foreground text-sm leading-relaxed font-sans max-w-2xl">
+            From cutting-edge LLM engineering and AI automation to healthcare technology and MBA-level strategy —
+            a skill set built for the AI era.
           </p>
         </div>
 
-        {/* Skill grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
-          {skillCategories.map((cat) => (
-            <div key={cat.title} className="glass-card rounded-2xl p-6">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-2 h-6 rounded-full" style={{ background: cat.color }} />
-                <h3 className="font-semibold text-foreground text-sm">{cat.title}</h3>
-              </div>
-              <p className="text-xs text-muted-foreground mb-4 pl-5">{cat.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {cat.skills.map((skill) => (
-                  <span key={skill} className={cat.badgeClass}>{skill}</span>
-                ))}
+        {/* Skill cards grid — article card style */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
+          {skillCategories.map((cat, i) => (
+            <div
+              key={cat.title}
+              className={`group rounded-3xl bg-card border border-border overflow-hidden card-hover animate-slide-up stagger-${(i % 6) + 1}`}
+            >
+              <div className="p-6 flex flex-col gap-3 h-full">
+                {/* Top: tag + arrow */}
+                <div className="flex items-center justify-between">
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium font-sans ${cat.tagClass}`}>
+                    {cat.tagLabel}
+                  </span>
+                  <div className="floating-button w-8 h-8">
+                    <ArrowUpRight size={13} />
+                  </div>
+                </div>
+                <h3 className="font-serif text-base font-bold text-foreground leading-snug">{cat.title}</h3>
+                <p className="text-xs text-muted-foreground font-sans">{cat.description}</p>
+                {/* Skill pills */}
+                <div className="flex flex-wrap gap-1.5 mt-1">
+                  {cat.skills.map((skill) => (
+                    <span key={skill} className="skill-pill">{skill}</span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Proficiency bars */}
-        <div className="mb-20">
-          <h3 className="text-xl font-semibold mb-8 text-foreground font-syne">Core Competency Levels</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { name: "Generative AI & Prompt Engineering", pct: 88, color: "var(--accent-green)" },
-              { name: "AI Product Management",               pct: 82, color: "var(--accent-cyan)" },
-              { name: "Healthcare Technology",               pct: 80, color: "var(--accent-cyan)" },
-              { name: "AI Automation (n8n, Cursor, etc.)",   pct: 85, color: "var(--accent-green)" },
-              { name: "Data Analysis & ML",                  pct: 78, color: "var(--accent-violet)" },
-              { name: "Full Stack Development",              pct: 84, color: "var(--accent-amber)" },
-            ].map((item) => (
-              <div key={item.name}>
-                <div className="flex justify-between text-sm mb-2">
-                  <span className="text-foreground font-medium">{item.name}</span>
-                  <span className="text-muted-foreground">{item.pct}%</span>
-                </div>
-                <div className="progress-bar">
-                  <div className="progress-fill" style={{ width: `${item.pct}%`, background: `linear-gradient(90deg, ${item.color}, var(--accent-cyan))` }} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Competency + Certifications row */}
+        <div className="grid md:grid-cols-2 gap-4">
 
-        {/* Certifications */}
-        <div>
-          <h3 className="text-xl font-semibold mb-8 text-foreground font-syne">Certifications & Training</h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            {certs.map((cert) => (
-              <div key={cert.name} className="glass-card rounded-xl p-4 flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={{ background: "var(--accent-green)" }} />
-                <div>
-                  <div className="text-sm font-medium text-foreground">{cert.name}</div>
-                  <div className="text-xs text-muted-foreground mt-0.5">{cert.issuer}</div>
+          {/* Competency bars */}
+          <div className="rounded-3xl bg-card border border-border p-6 md:p-8">
+            <h3 className="font-serif text-lg font-bold text-foreground mb-5">Core Competency Levels</h3>
+            <div className="space-y-4">
+              {competencies.map((item) => (
+                <div key={item.name}>
+                  <div className="flex justify-between text-xs mb-1.5 font-sans">
+                    <span className="text-foreground font-medium">{item.name}</span>
+                    <span className="text-muted-foreground">{item.pct}%</span>
+                  </div>
+                  <div className="progress-track">
+                    <div className="progress-fill" style={{ width: `${item.pct}%` }} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          {/* Certifications */}
+          <div className="rounded-3xl bg-card border border-border p-6 md:p-8">
+            <h3 className="font-serif text-lg font-bold text-foreground mb-5">Certifications &amp; Training</h3>
+            <div className="space-y-2.5">
+              {certs.map((cert) => (
+                <div key={cert.name} className="flex items-start gap-3 p-3 rounded-2xl bg-muted/50 border border-border">
+                  <span className={`mt-0.5 px-2 py-0.5 rounded-full text-[10px] font-medium font-sans shrink-0 ${cert.tag}`}>
+                    {cert.issuer.split(" ")[0]}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold text-foreground font-sans leading-snug">{cert.name}</p>
+                    <p className="text-[10px] text-muted-foreground font-sans mt-0.5">{cert.issuer}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

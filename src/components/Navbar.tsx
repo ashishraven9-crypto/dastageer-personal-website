@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 
 const navLinks = [
   { label: "About",      href: "#about" },
@@ -11,72 +11,107 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const [scrolled,  setScrolled]  = useState(false);
-  const [menuOpen,  setMenuOpen]  = useState(false);
+  const [scrolled,   setScrolled]   = useState(false);
+  const [menuOpen,   setMenuOpen]   = useState(false);
+  const [dark,       setDark]       = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-navbar py-3" : "py-5"}`}>
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+  const toggleDark = () => {
+    setDark((d) => {
+      document.documentElement.classList.toggle("dark", !d);
+      return !d;
+    });
+  };
 
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+      <nav
+        className={`pill-nav max-w-5xl mx-auto px-5 py-3 flex items-center justify-between transition-all duration-300 ${
+          scrolled ? "shadow-lg" : ""
+        }`}
+      >
         {/* Logo */}
         <a href="#" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm font-syne"
-            style={{ background: "linear-gradient(135deg, #10b981, #06b6d4)" }}>
+          <span className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold font-serif">
             G
-          </div>
-          <span className="font-semibold text-foreground tracking-tight text-sm">G. M. Dastageer</span>
+          </span>
+          <span className="hidden sm:block font-serif font-bold text-foreground text-base tracking-tight">
+            G. M. Dastageer
+          </span>
         </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-7">
-          {navLinks.map((link) => (
-            <a key={link.label} href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium">
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        {/* CTA */}
+        {/* Desktop nav links with dot separators */}
         <div className="hidden md:flex items-center">
-          <a href="#contact"
-            className="px-4 py-2 text-sm font-semibold rounded-lg text-white transition-all hover:opacity-85"
-            style={{ background: "linear-gradient(135deg, #10b981, #06b6d4)" }}>
-            Let's Connect
-          </a>
+          {navLinks.map((link, i) => (
+            <span key={link.label} className="flex items-center">
+              {i > 0 && (
+                <span className="text-muted-foreground/40 mx-1 text-xs select-none">·</span>
+              )}
+              <a
+                href={link.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded-lg hover:bg-muted"
+              >
+                {link.label}
+              </a>
+            </span>
+          ))}
         </div>
 
-        {/* Mobile hamburger */}
-        <button className="md:hidden text-muted-foreground hover:text-foreground"
-          onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden glass-navbar mt-2 mx-4 rounded-xl p-4 flex flex-col gap-3">
-          {navLinks.map((link) => (
-            <a key={link.label} href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors font-medium py-1">
-              {link.label}
-            </a>
-          ))}
-          <a href="#contact" onClick={() => setMenuOpen(false)}
-            className="mt-2 px-4 py-2 text-sm font-semibold rounded-lg text-center text-white"
-            style={{ background: "linear-gradient(135deg, #10b981, #06b6d4)" }}>
-            Let's Connect
+        {/* Right actions */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={toggleDark}
+            className="w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-all"
+            aria-label="Toggle theme"
+          >
+            {dark ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
+          <a
+            href="#contact"
+            className="hidden sm:flex items-center px-5 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-all hover:scale-105 font-sans"
+          >
+            Connect
           </a>
+          <button
+            className="md:hidden w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:bg-muted transition-all"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile dropdown */}
+      {menuOpen && (
+        <div className="md:hidden max-w-5xl mx-auto mt-2 rounded-3xl border border-border bg-background/95 backdrop-blur-lg shadow-lg overflow-hidden animate-slide-down">
+          <div className="p-4 flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="px-4 py-3 rounded-xl text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-all font-medium"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
+              className="mt-2 px-4 py-3 rounded-full bg-primary text-primary-foreground text-sm font-semibold text-center hover:opacity-90 transition-all"
+            >
+              Let's Connect
+            </a>
+          </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 };
 
