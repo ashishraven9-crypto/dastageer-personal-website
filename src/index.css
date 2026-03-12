@@ -4,77 +4,79 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   TRUE MINIMALISM — Pure Black / White / Grey palette
+   No warm tones, no hues, no saturation. Only neutral greys.
+───────────────────────────────────────────────────────────────────────────── */
 @layer base {
   :root {
-    --background: 36 44% 96%;
-    --foreground: 0 0% 18%;
-    --card: 33 40% 94%;
-    --card-foreground: 0 0% 18%;
-    --popover: 36 44% 96%;
-    --popover-foreground: 0 0% 18%;
-    --primary: 0 0% 18%;
-    --primary-foreground: 36 44% 96%;
-    --secondary: 25 30% 70%;
-    --secondary-foreground: 0 0% 18%;
-    --muted: 33 30% 88%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 140 20% 50%;
-    --accent-foreground: 36 44% 96%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 36 44% 96%;
-    --border: 33 25% 85%;
-    --input: 33 25% 85%;
-    --ring: 0 0% 18%;
-    --radius: 1rem;
+    /* Light mode — white base */
+    --background:          0 0% 99%;
+    --foreground:          0 0% 8%;
+    --card:                0 0% 97%;
+    --card-foreground:     0 0% 8%;
+    --popover:             0 0% 99%;
+    --popover-foreground:  0 0% 8%;
+    --primary:             0 0% 8%;
+    --primary-foreground:  0 0% 99%;
+    --secondary:           0 0% 92%;
+    --secondary-foreground:0 0% 8%;
+    --muted:               0 0% 94%;
+    --muted-foreground:    0 0% 45%;
+    --accent:              0 0% 20%;
+    --accent-foreground:   0 0% 99%;
+    --destructive:         0 72% 51%;
+    --destructive-foreground: 0 0% 99%;
+    --border:              0 0% 88%;
+    --input:               0 0% 88%;
+    --ring:                0 0% 8%;
+    --radius:              1rem;
 
-    /* Portfolio tag colors */
-    --tag-ai:         210 50% 75%;
-    --tag-health:     140 20% 70%;
-    --tag-strategy:   25 35% 60%;
-    --tag-mba:        280 30% 75%;
-    --tag-tech:       195 50% 70%;
-    --tag-research:   330 40% 75%;
-    --tag-leadership: 50 45% 70%;
+    /* Tag colors — all neutral grey tones */
+    --tag-ai:         0 0% 82%;
+    --tag-health:     0 0% 78%;
+    --tag-strategy:   0 0% 85%;
+    --tag-mba:        0 0% 80%;
+    --tag-tech:       0 0% 83%;
+    --tag-research:   0 0% 77%;
+    --tag-leadership: 0 0% 86%;
 
-    /* Polish tokens */
-    --cream:            40 40% 90%;
-    --cream-foreground: 0 0% 18%;
-    --surface-elevated: 36 44% 98%;
+    /* Surface tokens */
+    --surface-elevated: 0 0% 100%;
     --shadow-soft:      0 0% 0%;
   }
 
   .dark {
-    --background: 0 0% 10%;
-    --foreground: 36 44% 96%;
-    --card: 0 0% 14%;
-    --card-foreground: 36 44% 96%;
-    --popover: 0 0% 10%;
-    --popover-foreground: 36 44% 96%;
-    --primary: 36 44% 96%;
-    --primary-foreground: 0 0% 18%;
-    --secondary: 25 15% 30%;
-    --secondary-foreground: 36 44% 96%;
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 140 20% 45%;
-    --accent-foreground: 36 44% 96%;
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 36 44% 96%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 36 44% 96%;
+    /* Dark mode — near-black base */
+    --background:          0 0% 6%;
+    --foreground:          0 0% 95%;
+    --card:                0 0% 10%;
+    --card-foreground:     0 0% 95%;
+    --popover:             0 0% 6%;
+    --popover-foreground:  0 0% 95%;
+    --primary:             0 0% 95%;
+    --primary-foreground:  0 0% 8%;
+    --secondary:           0 0% 18%;
+    --secondary-foreground:0 0% 95%;
+    --muted:               0 0% 16%;
+    --muted-foreground:    0 0% 55%;
+    --accent:              0 0% 80%;
+    --accent-foreground:   0 0% 8%;
+    --destructive:         0 62% 50%;
+    --destructive-foreground: 0 0% 95%;
+    --border:              0 0% 18%;
+    --input:               0 0% 18%;
+    --ring:                0 0% 95%;
 
-    --tag-ai:         210 40% 45%;
-    --tag-health:     140 20% 40%;
-    --tag-strategy:   25 30% 40%;
-    --tag-mba:        280 25% 45%;
-    --tag-tech:       195 40% 45%;
-    --tag-research:   330 35% 45%;
-    --tag-leadership: 50 40% 45%;
+    --tag-ai:         0 0% 22%;
+    --tag-health:     0 0% 20%;
+    --tag-strategy:   0 0% 24%;
+    --tag-mba:        0 0% 21%;
+    --tag-tech:       0 0% 23%;
+    --tag-research:   0 0% 19%;
+    --tag-leadership: 0 0% 25%;
 
-    --cream:            40 20% 25%;
-    --cream-foreground: 36 44% 96%;
-    --surface-elevated: 0 0% 16%;
+    --surface-elevated: 0 0% 12%;
     --shadow-soft:      0 0% 0%;
   }
 }
@@ -98,43 +100,42 @@
 }
 
 @layer utilities {
-  /* Card hover — matches reference blog */
+  /* ── Card hover ── */
   .card-hover {
-    @apply transition-all duration-500 hover:scale-[1.02];
-    box-shadow: 0 4px 20px -4px hsl(var(--shadow-soft) / 0.1);
+    @apply transition-all duration-500 hover:scale-[1.015];
+    box-shadow: 0 2px 12px -4px hsl(var(--shadow-soft) / 0.06);
   }
   .card-hover:hover {
-    box-shadow: 0 20px 40px -10px hsl(var(--shadow-soft) / 0.15);
+    box-shadow: 0 12px 32px -8px hsl(var(--shadow-soft) / 0.12);
   }
 
-  /* Pill navbar */
+  /* ── Pill navbar ── */
   .pill-nav {
     @apply rounded-full backdrop-blur-lg border border-border;
-    background: hsl(var(--surface-elevated));
-    border-color: hsl(var(--border));
+    background: hsl(var(--surface-elevated) / 0.92);
   }
 
-  /* Floating circular arrow button */
+  /* ── Floating circular button ── */
   .floating-button {
-    @apply w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300;
-    background: hsl(var(--cream) / 0.9);
-    color: hsl(var(--cream-foreground));
-    box-shadow: 0 4px 12px -2px hsl(var(--shadow-soft) / 0.15);
+    @apply rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 cursor-pointer;
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+    box-shadow: 0 4px 12px -2px hsl(var(--shadow-soft) / 0.18);
   }
   .floating-button:hover {
-    background: hsl(var(--cream));
+    background: hsl(var(--muted-foreground));
   }
 
-  /* Tag pill colors */
-  .tag-ai         { background: hsl(var(--tag-ai));         @apply text-primary; }
-  .tag-health     { background: hsl(var(--tag-health));     @apply text-primary; }
-  .tag-strategy   { background: hsl(var(--tag-strategy));   @apply text-primary; }
-  .tag-mba        { background: hsl(var(--tag-mba));        @apply text-primary; }
-  .tag-tech       { background: hsl(var(--tag-tech));       @apply text-primary; }
-  .tag-research   { background: hsl(var(--tag-research));   @apply text-primary; }
-  .tag-leadership { background: hsl(var(--tag-leadership)); @apply text-primary; }
+  /* ── Tag pills — all neutral grey ── */
+  .tag-ai         { background: hsl(var(--tag-ai));         color: hsl(var(--foreground)); }
+  .tag-health     { background: hsl(var(--tag-health));     color: hsl(var(--foreground)); }
+  .tag-strategy   { background: hsl(var(--tag-strategy));   color: hsl(var(--foreground)); }
+  .tag-mba        { background: hsl(var(--tag-mba));        color: hsl(var(--foreground)); }
+  .tag-tech       { background: hsl(var(--tag-tech));       color: hsl(var(--foreground)); }
+  .tag-research   { background: hsl(var(--tag-research));   color: hsl(var(--foreground)); }
+  .tag-leadership { background: hsl(var(--tag-leadership)); color: hsl(var(--foreground)); }
 
-  /* Skill pill badge */
+  /* ── Skill pill badge ── */
   .skill-pill {
     @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border;
     background: hsl(var(--muted));
@@ -143,22 +144,22 @@
     transition: all 0.2s ease;
   }
   .skill-pill:hover {
-    background: hsl(var(--accent));
-    color: hsl(var(--accent-foreground));
-    border-color: hsl(var(--accent));
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+    border-color: hsl(var(--foreground));
   }
 
-  /* Progress bar */
+  /* ── Progress bar ── */
   .progress-track {
-    @apply w-full h-2 rounded-full;
+    @apply w-full h-1.5 rounded-full;
     background: hsl(var(--muted));
   }
   .progress-fill {
-    @apply h-2 rounded-full transition-all duration-1000;
-    background: hsl(var(--accent));
+    @apply h-1.5 rounded-full transition-all duration-1000;
+    background: hsl(var(--foreground));
   }
 
-  /* Animations */
+  /* ── Animations ── */
   @keyframes fadeIn {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -172,14 +173,14 @@
     to   { opacity: 1; transform: translateY(0); }
   }
   @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.95); }
+    from { opacity: 0; transform: scale(0.96); }
     to   { opacity: 1; transform: scale(1); }
   }
 
-  .animate-fade-in    { animation: fadeIn   0.5s ease-out; }
-  .animate-slide-up   { animation: slideUp  0.6s ease-out; }
+  .animate-fade-in    { animation: fadeIn    0.5s ease-out; }
+  .animate-slide-up   { animation: slideUp   0.6s ease-out; }
   .animate-slide-down { animation: slideDown 0.6s ease-out; }
-  .animate-scale-in   { animation: scaleIn  0.5s ease-out; }
+  .animate-scale-in   { animation: scaleIn   0.5s ease-out; }
 
   .stagger-1 { animation-delay: 0.1s; opacity: 0; animation-fill-mode: forwards; }
   .stagger-2 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
@@ -188,9 +189,9 @@
   .stagger-5 { animation-delay: 0.5s; opacity: 0; animation-fill-mode: forwards; }
   .stagger-6 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
 
-  /* Scrollbar */
-  ::-webkit-scrollbar       { width: 5px; }
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar       { width: 4px; }
   ::-webkit-scrollbar-track { background: hsl(var(--background)); }
-  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 2px; }
   ::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground)); }
 }

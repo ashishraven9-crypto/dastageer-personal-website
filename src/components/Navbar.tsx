@@ -37,11 +37,11 @@ const Navbar = () => {
       >
         {/* Logo */}
         <a href="#" className="flex items-center gap-2.5 group">
-          <span className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold font-serif">
-            G
+          <span className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold font-sans tracking-tight">
+            GMD
           </span>
           <span className="hidden sm:block font-serif font-bold text-foreground text-base tracking-tight">
-            G. M. Dastageer
+            G.Md.Dastageer
           </span>
         </a>
 

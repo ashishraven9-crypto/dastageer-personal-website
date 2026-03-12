@@ -13,10 +13,10 @@ const Footer = () => {
             {/* Brand */}
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2.5">
-                <span className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold font-serif">
-                  G
+                <span className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold font-sans tracking-tight">
+                  GMD
                 </span>
-                <span className="font-serif font-bold text-foreground text-base">G. Mohammed Dastageer</span>
+                <span className="font-serif font-bold text-foreground text-base">G.Md.Dastageer</span>
               </div>
               <p className="text-xs text-muted-foreground font-sans max-w-xs leading-relaxed">
                 MBA · NIT Kurukshetra &nbsp;·&nbsp; AI Product Manager &nbsp;·&nbsp; Medical Management Specialist &nbsp;·&nbsp; Bangalore, India

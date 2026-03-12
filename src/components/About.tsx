@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, Brain, HeartPulse, TrendingUp, BookOpen, ArrowUpRight } from "lucide-react";
+import { MapPin, Phone, Mail, Brain, HeartPulse, TrendingUp, BookOpen, ArrowUpRight } from "lucide-react";
 
 const pillars = [
   {
@@ -82,10 +82,9 @@ const About = () => {
             {/* Right — info cards (2 cols) */}
             <div className="md:col-span-2 bg-muted/40 border-t md:border-t-0 md:border-l border-border p-8 flex flex-col justify-center gap-3">
               {[
-                { icon: MapPin,  label: "Location",     value: "Bangalore, India" },
-                { icon: Phone,   label: "Phone",        value: "+91 9490133147" },
-                { icon: Mail,    label: "Email",        value: "gmddastageer@gmail.com" },
-                { icon: Clock,   label: "Availability", value: "Immediate" },
+                { icon: MapPin,  label: "Location",  value: "Bangalore, India" },
+                { icon: Phone,   label: "Phone",     value: "+91 9490133147" },
+                { icon: Mail,    label: "Email",     value: "gmddastageer@gmail.com" },
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-center gap-3 p-4 rounded-2xl bg-background border border-border">
                   <div className="w-9 h-9 rounded-full bg-muted flex items-center justify-center shrink-0">

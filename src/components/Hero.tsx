@@ -1,29 +1,56 @@
-import { ArrowUpRight, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Linkedin, Mail, MapPin, Brain, Stethoscope, Cpu } from "lucide-react";
 
 const Hero = () => {
   return (
     <section id="hero" className="pt-28 pb-6 px-4">
       <div className="max-w-5xl mx-auto">
 
-        {/* Main hero card — reference blog large rounded card */}
-        <div className="rounded-4xl bg-card border border-border overflow-hidden card-hover animate-scale-in">
+        {/* Main hero card */}
+        <div className="rounded-4xl bg-card border border-border overflow-hidden animate-scale-in">
           <div className="grid md:grid-cols-2 gap-0 min-h-[420px]">
 
-            {/* Left — profile image */}
-            <div className="relative overflow-hidden bg-muted min-h-[280px] md:min-h-0">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80&fit=crop&crop=face,top"
-                alt="G. Mohammed Dastageer — MBA NIT Kurukshetra"
-                className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
-              />
-              {/* Subtle gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-card/30" />
+            {/* Left — abstract identity panel (no face) */}
+            <div className="relative overflow-hidden bg-muted min-h-[280px] md:min-h-0 flex items-center justify-center">
+              {/* Abstract geometric background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-muted via-muted to-border/40" />
+              {/* Decorative circles */}
+              <div className="absolute top-8 left-8 w-32 h-32 rounded-full border border-border/60" />
+              <div className="absolute top-16 left-16 w-20 h-20 rounded-full border border-border/40" />
+              <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full border border-border/50" />
+              <div className="absolute bottom-20 right-20 w-24 h-24 rounded-full border border-border/30" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-border/20" />
+
+              {/* Center monogram */}
+              <div className="relative z-10 flex flex-col items-center gap-4">
+                <div className="w-24 h-24 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold font-sans tracking-tight shadow-lg">
+                  GMD
+                </div>
+                <div className="text-center">
+                  <p className="font-serif font-bold text-foreground text-lg">G.Md.Dastageer</p>
+                  <p className="text-xs text-muted-foreground font-sans mt-1">MBA · NIT Kurukshetra</p>
+                </div>
+              </div>
+
               {/* MBA badge overlay */}
               <div className="absolute top-5 left-5">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-xs font-medium text-white border border-white/30">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-md text-xs font-medium text-foreground border border-border font-sans">
+                  <span className="w-1.5 h-1.5 rounded-full bg-foreground animate-pulse" />
                   MBA @ NIT Kurukshetra
                 </span>
+              </div>
+
+              {/* Floating skill pills */}
+              <div className="absolute bottom-5 left-5 right-5 flex flex-wrap gap-2 justify-center">
+                {[
+                  { icon: Brain, label: "AI PM" },
+                  { icon: Stethoscope, label: "Medical Mgmt" },
+                  { icon: Cpu, label: "LLM Engineering" },
+                ].map(({ icon: Icon, label }) => (
+                  <span key={label} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-background/70 backdrop-blur-sm border border-border text-xs font-medium text-foreground font-sans">
+                    <Icon size={10} />
+                    {label}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -37,7 +64,7 @@ const Hero = () => {
                 </span>
               </div>
 
-              {/* Heading — Merriweather serif */}
+              {/* Heading */}
               <div>
                 <h1 className="font-serif text-4xl md:text-5xl font-black leading-[1.1] tracking-tight text-foreground mb-4">
                   Journey Through<br />
@@ -77,11 +104,11 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Stats */}
+              {/* Stats — 1 yr exp, 20+ certs, 2 domains */}
               <div className="flex items-center gap-6 pt-4 border-t border-border">
                 {[
-                  { value: "4+",  label: "Years Exp." },
-                  { value: "12+", label: "Certifications" },
+                  { value: "1+",  label: "Years Exp." },
+                  { value: "20+", label: "Certifications" },
                   { value: "2",   label: "Key Domains" },
                 ].map((s) => (
                   <div key={s.label} className="text-center">
@@ -94,7 +121,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Intro tagline — matches reference IntroSection */}
+        {/* Intro tagline */}
         <div className="max-w-3xl mx-auto py-12 text-center">
           <h2 className="font-serif text-2xl md:text-3xl font-bold leading-tight text-foreground animate-slide-up">
             Perspective is a space where AI meets healthcare — exploring ideas, building products,

@@ -116,17 +116,7 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Availability */}
-            <div className="p-4 rounded-2xl border border-accent/30 bg-accent/5 flex flex-col gap-2 mt-auto">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-sm font-semibold text-foreground font-sans">Available for Opportunities</span>
-              </div>
-              <p className="text-xs text-muted-foreground font-sans leading-relaxed">
-                Open to full-time roles, internships, consulting engagements, and collaborative research
-                in AI PM, healthcare technology, and business strategy.
-              </p>
-            </div>
+
           </div>
 
           {/* Contact form card */}
