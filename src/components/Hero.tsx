@@ -2,7 +2,6 @@ import { ArrowUpRight, Linkedin, Mail, MapPin, Brain, Stethoscope, Cpu, ChevronD
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useCounter } from "@/hooks/useCounter";
-import { useAB } from "@/contexts/ABContext";
 import MagneticCard from "./MagneticCard";
 
 const roles = [
@@ -28,7 +27,6 @@ const StatCard = ({ value, suffix, label, active }: { value: number; suffix: str
 const Hero = () => {
   const typed = useTypewriter(roles, 70, 2000);
   const { ref: statsRef, visible: statsVisible } = useScrollReveal(0.3);
-  const { track } = useAB();
 
   return (
     <section id="hero" className="pt-24 sm:pt-28 pb-6 px-3 sm:px-4 relative z-10">
@@ -193,7 +191,6 @@ const Hero = () => {
                 <div className="flex flex-wrap items-center gap-3">
                   <a
                     href="#projects"
-                    onClick={() => track("cta_click", "hero_view_work")}
                     className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-sm font-semibold hover:bg-foreground/80 hover:scale-105 transition-all font-sans shadow-lg hover:shadow-xl"
                   >
                     View My Work
@@ -201,7 +198,6 @@ const Hero = () => {
                   </a>
                   <a
                     href="#contact"
-                    onClick={() => track("cta_click", "hero_get_in_touch")}
                     className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-muted text-foreground text-sm font-semibold hover:bg-foreground hover:text-background hover:scale-105 transition-all font-sans"
                   >
                     Get In Touch

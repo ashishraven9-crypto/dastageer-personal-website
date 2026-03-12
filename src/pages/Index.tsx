@@ -11,51 +11,33 @@ import ParticleBackground from "@/components/ParticleBackground";
 import CustomCursor from "@/components/CustomCursor";
 import MarqueeTicker from "@/components/MarqueeTicker";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
-import { ABProvider, useAB } from "@/contexts/ABContext";
-
-// Inner component that reads variant from context
-const PortfolioContent = () => {
-  const { variant } = useAB();
-
-  // Map variant to CSS class
-  const variantClass =
-    variant === "midnight" ? "variant-midnight" :
-    variant === "forest"   ? "variant-forest"   : "";
-
-  return (
-    <div className={`min-h-screen bg-background text-foreground relative transition-colors duration-700 ${variantClass}`}>
-      {/* Scroll progress bar */}
-      <ScrollProgressBar />
-
-      {/* Animated particle background */}
-      <ParticleBackground />
-
-      {/* Custom magnetic cursor */}
-      <CustomCursor />
-
-      {/* Page content */}
-      <Navbar />
-      <Hero />
-
-      {/* Scrolling skill ticker between Hero and About */}
-      <MarqueeTicker />
-
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Blog />
-      <Contact />
-      <Footer />
-
-    </div>
-  );
-};
 
 const Index = () => (
-  <ABProvider>
-    <PortfolioContent />
-  </ABProvider>
+  <div className="min-h-screen bg-background text-foreground relative">
+    {/* Scroll progress bar */}
+    <ScrollProgressBar />
+
+    {/* Animated particle background */}
+    <ParticleBackground />
+
+    {/* Custom magnetic cursor */}
+    <CustomCursor />
+
+    {/* Page content */}
+    <Navbar />
+    <Hero />
+
+    {/* Scrolling skill ticker between Hero and About */}
+    <MarqueeTicker />
+
+    <About />
+    <Skills />
+    <Projects />
+    <Experience />
+    <Blog />
+    <Contact />
+    <Footer />
+  </div>
 );
 
 export default Index;
