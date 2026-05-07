@@ -40,6 +40,7 @@
     --tag-tech:       220 20% 88%;   /* cool lavender-grey */
     --tag-research:   340 20% 88%;   /* soft rose-grey */
     --tag-leadership:  60 20% 87%;   /* warm yellow-grey */
+    --tag-vibe:       280 25% 88%;   /* soft purple-grey for vibecoding */
 
     --surface-elevated: 36 30% 99%;
     --shadow-soft:      25 30% 15%;
@@ -170,6 +171,7 @@
   .tag-tech       { background: hsl(var(--tag-tech));       color: hsl(var(--foreground)); }
   .tag-research   { background: hsl(var(--tag-research));   color: hsl(var(--foreground)); }
   .tag-leadership { background: hsl(var(--tag-leadership)); color: hsl(var(--foreground)); }
+  .tag-vibe       { background: hsl(var(--tag-vibe));       color: hsl(var(--foreground)); }
 
   /* ── Skill pill badge ── */
   .skill-pill {

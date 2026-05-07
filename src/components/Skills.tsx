@@ -4,6 +4,24 @@ import { useState, useEffect, useRef } from "react";
 
 const skillCategories = [
   {
+    title: "Vibecoding & AI Orchestration",
+    tagLabel: "Vibecoding",
+    tagClass: "tag-vibe",
+    description: "Natural language programming, AI agent collaboration, and rapid 'vibe-driven' development",
+    skills: [
+      "Natural Language Programming",
+      "AI Agent Orchestration",
+      "Rapid Prototyping",
+      "Human-in-the-loop AI",
+      "Multimodal AI Integration",
+      "Prompt-based Development",
+      "Manus / Replit Agent",
+      "Vibe-driven Development (VDD)",
+      "Cursor / Windsurf",
+      "AI-Native Workflows",
+    ],
+  },
+  {
     title: "Generative AI & LLM Engineering",
     tagLabel: "AI / LLM",
     tagClass: "tag-ai",
@@ -209,6 +227,7 @@ const certs = [
 ];
 
 const competencies = [
+  { name: "Vibecoding & AI Orchestration",            pct: 92 },
   { name: "Generative AI & Prompt Engineering",       pct: 88 },
   { name: "AI Automation (n8n, Cursor, Lovable)",     pct: 85 },
   { name: "AI Agent Frameworks (LangChain, CrewAI)",  pct: 80 },
